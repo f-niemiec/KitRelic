@@ -1,1 +1,2 @@
-# KitRelic
+# KitRelic - A sportswear e-commerce
+Kitrelic is a web application developed as a project for my "Tecnologie e Software per il Web" course @ Università degli Studi di Salerno (2025). The project involves the creation of an e-commerce platform specialized in the sale of sportswear. The goal is to develop a dynamic web application with a responsive layout, capable of delivering a complete shopping experience and incorporating the core features typical of modern e-commerce platforms.
