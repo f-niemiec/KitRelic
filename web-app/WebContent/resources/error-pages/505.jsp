@@ -4,11 +4,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>404 - Pagina non trovata</title>
+		<title>500 - Errore server</title>
 	</head>
 	<body>
-		<h1>Errore 404 - Pagina non trovata!</h1>
-		<p> La risorsa che stai cercando non esiste. </p>
+		<h1>Errore 500 - Errore del server!</h1>
+		<p> Si è verificato un errore inatteso, si prega di riprovare. </p>
 		<button>Torna alla home</button>
 	</body>
 </html>
