@@ -1,0 +1,1 @@
+1) Aggiungi i collegamenti per i bottoni nelle pagine di errore

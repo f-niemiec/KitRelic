@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #1d1718;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#page {
+	width: 100%;
+	max-width: 1000px;
+	margin: auto;
+}
+
+.container {
+	text-align: center;
+	background-color: #e7e1df;
+	color: #1d1718;
+	padding: 32px;
+	border-radius: 10px;
+	box-shadow: 0px 4px 12px;
+	width: 100%;
+	max-width: 600px;
+}
+
+h1 {
+	font-size: 60px;
+	font-weight: bold;
+	color: #1d1718;
+}
+
+p {
+	font-size: 22px;
+	margin: 20px 0px;
+	color: #1d1718;
+}
+
+button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #1d1718;
+      color: #ffffff;
+      border: 2px solid #b7a7a1;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+      background-color: #b7a7a1;
+      color: #1d1718;
+}
+
+@media screen and (max-width: 800px) {
+  body, html {
+    padding: 15px;
+  }
+  
+  .container {
+    padding: 25px;
+    width: 95%;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  body, html {
+    padding: 10px;
+  }
+  
+  .container {
+    padding: 20px 15px;
+  }
+  
+  h1 {
+    font-size: 28px; 
+  }
+  
+  p {
+    font-size: 16px; 
+  }
+  
+  button {
+    width: 100%; 
+    padding: 12px;
+  }
+}
+
+    
