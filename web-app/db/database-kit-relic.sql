@@ -5,6 +5,7 @@ USE KitRelicDB;
 CREATE TABLE Utenti (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Password CHAR(128) NOT NULL,
+    Email VARCHAR(255) NOT NULL UNIQUE,
     Nome VARCHAR(100),
     Cognome VARCHAR(100),
     Tipo ENUM('Admin', 'Utente') NOT NULL,
