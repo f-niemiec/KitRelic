@@ -52,7 +52,7 @@
                 </div>
             </div>
             
-            <input type="submit" value="Accedi">
+            <input type="submit" value="Registrati">
             
             <div class="footer">
                 Hai già un account? <a href="Login.jsp">Accedi</a>
