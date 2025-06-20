@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Accedi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css">
 </head>
 <body>
     <div class="container">
@@ -19,14 +19,14 @@
             <div class="group">
                 <label for="email">Email</label>
                 <div class="input-wrapper">
-                    <input type="email" id="email" placeholder="E-mail">
+                    <input type="email" name="email" id="email" placeholder="E-mail">
                 </div>
             </div>
         
             <div class="group">
                 <label for="password-one">Password</label>
                 <div class="input-wrapper">
-                    <input type="password" id="password-one" placeholder="Password">
+                    <input type="password" name="password" id="password-one" placeholder="Password">
                 </div>
             </div>
            

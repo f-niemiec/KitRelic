@@ -7,12 +7,15 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Date;
+import java.time.LocalDate;
+
 
 public class RegistrationDS {
 	public boolean insertUser(RegistrationBean bean) {
 		try(Connection connection = ds.getConnection()){
 			String query;
-			query = "INSERT INTO" + TABLE_NAME + "(Password, Email, Nome, Cognome, Tipo, DataNascita) "
+			query = "INSERT INTO " + TABLE_NAME + "(Password, Email, Nome, Cognome, Tipo, DataNascita) "
 					+ "VALUES (?, ?, ?, ?, ?, ?)";
 			try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
 				preparedStatement.setString(1, bean.getPassword());
@@ -20,7 +23,7 @@ public class RegistrationDS {
 				preparedStatement.setString(3, bean.getNome());
 				preparedStatement.setString(4, bean.getCognome());
 				preparedStatement.setString(5, TipoUtente.Utente.name());
-				preparedStatement.setDate(6, bean.getData());
+				preparedStatement.setDate(6, java.sql.Date.valueOf(bean.getData()));
 				
 				int rows = preparedStatement.executeUpdate();
 				if(rows > 0) {

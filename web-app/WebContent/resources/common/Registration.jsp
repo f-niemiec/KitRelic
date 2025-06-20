@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <form class="form" action="" method="post">
+        <form class="form" action="${pageContext.request.contextPath}/RegistrationServlet" method="post">
             <div class="header">
                 <h2>Registrazione</h2>
                 <p>Crea il tuo account</p>
@@ -19,36 +19,42 @@
                 <div class="group">
                     <label for="name">Nome</label>
                     <div class="input-wrapper">
-                        <input type="text" id="name" placeholder="Nome">
+                        <input type="text" name="name" id="name" placeholder="Nome">
                     </div>
                 </div>
 
+				<div class="group">
+                    <label for="name">Cognome</label>
+                    <div class="input-wrapper">
+                        <input type="text" name="surname" id="surname" placeholder="Cognome">
+                    </div>
+                </div>
             
             <div class="group">
                 <label for="email">Email</label>
                 <div class="input-wrapper">
-                    <input type="email" id="email" placeholder="E-mail">
+                    <input type="email" name="email" id="email" placeholder="E-mail">
                 </div>
             </div>
             
             <div class="group">
                 <label for="date">Data di nascita</label>
                 <div class="input-wrapper">
-                    <input type="date" id="date">
+                    <input type="date" name="date" id="date">
                 </div>
             </div>
             
             <div class="group">
                 <label for="password-one">Password</label>
                 <div class="input-wrapper">
-                    <input type="password" id="password-one" placeholder="Password">
+                    <input type="password" name="password" id="password-one" placeholder="Password">
                 </div>
             </div>
             
             <div class="group">
                 <label for="password-two">Conferma Password</label>
                 <div class="input-wrapper">
-                    <input type="password" id="password-two" placeholder="Conferma password">
+                    <input type="password" name="confirm" id="password-two" placeholder="Conferma password">
                 </div>
             </div>
             

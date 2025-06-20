@@ -1,6 +1,7 @@
 package model;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class RegistrationBean {
 	public RegistrationBean() {}
@@ -45,11 +46,11 @@ public class RegistrationBean {
 		this.tipo = tipo;
 	}
 	
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 	
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 	
@@ -58,5 +59,5 @@ public class RegistrationBean {
 	private String email;
 	private String password;
 	private TipoUtente tipo;
-	private Date data;
+	private LocalDate data;
 }
