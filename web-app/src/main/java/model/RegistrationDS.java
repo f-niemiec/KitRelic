@@ -67,7 +67,6 @@ public class RegistrationDS {
 
 		} catch (NamingException e) {
 			System.out.println("Error:" + e.getMessage());
-			
 		}		
 	}
 	private static final String TABLE_NAME = "Utenti";

@@ -3,22 +3,22 @@ package model;
 public class LoginBean {
 	public LoginBean() {}
 		
-	public string getEmail() {
+	public String getEmail() {
 		return email;
 	}
 	
-	public void setEmail(string email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 	
-	public string getPassword() {
+	public String getPassword() {
 		return password;
 	}
 	
-	public void setPassword(string password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	private string email;
-	private string password;
+	private String email;
+	private String password;
 }
