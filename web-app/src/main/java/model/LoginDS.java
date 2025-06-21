@@ -15,7 +15,7 @@ import control.Encrypt;
 public class LoginDS {
 	public boolean userExists(LoginBean bean) {
 		String query;
-		query = "SELECT * FROM " + TABLE_NAME + "WHERE Email= ?"; 
+		query = "SELECT * FROM " + TABLE_NAME + " WHERE Email= ?"; 
 		String encrypted = "";
 		String fromDB = "";
 		try(Connection connection = ds.getConnection()){
