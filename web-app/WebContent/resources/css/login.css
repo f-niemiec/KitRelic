@@ -9,6 +9,10 @@ body {
     padding: 10px;
 }
 
+#app-root{
+	display: none;
+}
+
 .container {
     background-color: #e7e1df;
     border-radius: 8px;
@@ -46,8 +50,8 @@ body {
 
 label {
     display: block;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: bold;
     color: #1d1718;
     margin-bottom: 6px;
 }
@@ -110,6 +114,15 @@ input[type="submit"]:hover {
 .footer a:hover {
     text-decoration: underline;
 }
+
+div.error {
+	display: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: #a5243d;
+    margin-bottom: 6px;
+}
+
 
 @media screen and (max-width: 550px) {
     body {

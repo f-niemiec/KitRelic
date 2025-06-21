@@ -6,6 +6,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -40,6 +41,20 @@ public class RegistrationDS {
 		}
 	}
 	
+	public boolean emailExists(String email) {
+		String query;
+		query = "SELECT * FROM " + TABLE_NAME + " WHERE Email = ?";
+		try (Connection connection = ds.getConnection()){
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, email);
+			try(ResultSet rs = preparedStatement.executeQuery()){
+					return rs.next();
+			} 
+		} catch (SQLException s) {
+			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
+			return false;
+		}
+	}
 	
 	
 	private static DataSource ds;
