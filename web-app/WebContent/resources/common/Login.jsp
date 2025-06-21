@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Accedi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/login.css">
 </head>
 <body>
     <div class="container">
@@ -21,12 +21,14 @@
                 <div class="input-wrapper">
                     <input type="email" name="email" id="email" placeholder="E-mail">
                 </div>
+                 <div id="error-mailExists" class="error">Non esiste alcun account con questa mail.</div>
             </div>
         
             <div class="group">
                 <label for="password-one">Password</label>
                 <div class="input-wrapper">
                     <input type="password" name="password" id="password-one" placeholder="Password">
+                    <div id="error-password" class="error">Passoword errata.</div>
                 </div>
             </div>
            
@@ -34,7 +36,7 @@
             <input type="submit" value="Accedi">
             
             <div class="footer">
-                Non hai un account? <a href="Registration.jsp">Registrati</a>
+                Non hai un account? <a href="${pageContext.request.contextPath}/Registration.jsp">Registrati</a>
             </div>
         </form>
     </div>
