@@ -1,6 +1,8 @@
 package model;
 
-public class LoginBean {
+import java.io.Serializable;
+
+public class LoginBean implements Serializable{
 	public LoginBean() {}
 		
 	public String getEmail() {

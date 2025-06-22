@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class RegistrationBean {
+public class RegistrationBean implements Serializable{
 	public RegistrationBean() {}
 	
 	public String getNome() {
