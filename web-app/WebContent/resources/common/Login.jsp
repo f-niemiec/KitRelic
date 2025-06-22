@@ -12,7 +12,7 @@
 <body>
 	<div id="app-root" data-context-path="${pageContext.request.contextPath}"></div>
     <div class="container">
-        <form class="form" action="${pageContext.request.contextPath}/LoginServlet" method="post">
+        <form class="form" action="${pageContext.request.contextPath}/LoginServlet" method="post" onsubmit="return validateLogin()">
             <div class="header">
                 <h2>Login</h2>
                 <p>Effettua l'accesso</p>
@@ -39,6 +39,8 @@
 					<%
     					}
 					%>
+					<div id="error-checked" class="error"></div>
+					
                 </div>
             </div>
            

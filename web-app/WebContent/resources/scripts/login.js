@@ -24,3 +24,27 @@ function checkExistence() {
         document.getElementById('invio').disabled = false;
     }
 }
+
+function validatePassword(password) {
+    return (
+        password.length >= 8 &&
+        /[A-Z]/.test(password) &&
+        /[a-z]/.test(password) &&
+        /[!@#$%^&*(),.?":{}|<>]/.test(password) &&
+        !/\s/.test(password)
+    );
+}
+
+function validateLogin() { 
+	const password = document.getElementById("password-one").value; 
+	const errorDiv = document.getElementById("error-checked"); 
+	if (!validatePassword(password)) { 
+		errorDiv.style.display = "block";
+		 errorDiv.textContent = "La password non rispetta i criteri richiesti."; 
+		 return false; 
+	 } 
+	 errorDiv.style.display = "none"; 
+	 errorDiv.textContent = "";
+	 return true;
+	 }
+
