@@ -39,13 +39,14 @@ CREATE TABLE MetodoDiPagamento (
 
 CREATE TABLE Prodotto (
     ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(80),
     Prezzo DECIMAL(10,2),
     Quantita INT,
     Tipo VARCHAR(50),
     Taglia VARCHAR(10),
     Tendenza BOOLEAN,
     Nuovo BOOLEAN,
-    Descrizione TEXT,
+    Descrizione VARCHAR(300),
     Foto mediumblob DEFAULT NULL
 );
 
@@ -69,3 +70,14 @@ CREATE TABLE OggettoOrdine (
     FOREIGN KEY (OrdineID) REFERENCES Ordini(ID),
     FOREIGN KEY (ProdottoID) REFERENCES Prodotto(ID)
 );
+
+INSERT INTO Utenti (Password, Email, Nome, Cognome, Tipo, DataNascita)
+VALUES (
+    'ba97ee796625c49f9b08e42a4a760f648dd5b85ca551450afeefde4986985284cb61383093ebd1549a23d49c649f6ebe66be313402af70dcd44940e06bc093a5',
+    'francesconiemiec23@gmail.com',
+    'Francesco',
+    'Niemiec',
+    'Admin',
+    '2004-03-23'
+);
+

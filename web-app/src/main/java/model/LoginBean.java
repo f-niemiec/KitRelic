@@ -21,6 +21,7 @@ public class LoginBean implements Serializable{
 		this.password = password;
 	}
 
+	private static final long serialVersionUID = 1L;
 	private String email;
 	private String password;
 }

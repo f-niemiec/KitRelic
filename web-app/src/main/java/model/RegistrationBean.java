@@ -55,6 +55,7 @@ public class RegistrationBean implements Serializable{
 		this.data = data;
 	}
 	
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String cognome;
 	private String email;

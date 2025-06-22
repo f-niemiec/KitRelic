@@ -3,7 +3,16 @@ package model;
 import java.io.Serializable;
 
 public class ProductBean implements Serializable{
+	
 	public ProductBean(){};
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	public double getPrice() {
 		return price;
@@ -61,6 +70,15 @@ public class ProductBean implements Serializable{
 		this.description = description;
 	}
 	
+	@Override
+	public String toString() {
+		return "[Nome: " + name + " Prezzo: " + price + " Quantità: " + quantity + " Tipo: " + type +
+				" Taglia: " + size + " Di tendanza: " + trend + " Nuovo: " + recent + " Descrizione: " 
+				+ description + "]";
+	}
+	
+	private static final long serialVersionUID = 1L;
+	private String name;
 	private double price;
 	private double quantity;
 	private String type;

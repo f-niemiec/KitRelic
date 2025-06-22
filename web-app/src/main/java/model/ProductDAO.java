@@ -1,8 +1,11 @@
 package model;
 
+import java.util.Collection;
+
 public interface ProductDAO {
-	boolean insertProduct(ProductBean product);
-	ProductBean getProductByID(int id);
+	boolean doSave(ProductBean product);
+	ProductBean doRetrieveByKey(int id);
+	Collection<ProductBean> doRetrieveAll();
 	boolean doDeleteByID(int id);
 	boolean doUpdatePrice(int id, int newPrice);
 	boolean doUpdateTrend(int id);
