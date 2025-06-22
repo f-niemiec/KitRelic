@@ -22,11 +22,11 @@ public class ProductBean implements Serializable{
 		this.price = price;
 	}
 	
-	public double getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 	
-	public void setQuantity(double quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 	
@@ -80,7 +80,7 @@ public class ProductBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private double price;
-	private double quantity;
+	private int quantity;
 	private String type;
 	private String size;
 	private boolean trend;
