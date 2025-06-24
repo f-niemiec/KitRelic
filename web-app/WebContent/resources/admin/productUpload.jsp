@@ -7,6 +7,6 @@
 	<title>Inserisci prodotto</title>
 </head>
 <body>
-
+	
 </body>
 </html>
