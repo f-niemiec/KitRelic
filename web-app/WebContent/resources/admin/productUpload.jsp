@@ -11,7 +11,7 @@
 </head>
 <body>
  <div class="container">
-        <form class="form" action="${pageContext.request.contextPath}/AddProductServlet" method="post">
+        <form class="form" action="${pageContext.request.contextPath}/AddProductServlet" method="post" enctype="multipart/form-data">
             <div class="header">
                 <h2>Inserimento prodotto</h2>
                 <p>Inserisci le informazioni richieste</p>
@@ -92,6 +92,13 @@
     				<input type="checkbox" name="recent" id="recent" value="true">
   				</div>
 			</div> 
+			<div class="group">
+                <label for="type">Foto</label>
+                <div class="input-wrapper">
+                    <input class="file" type="file" name="photo" maxlength="255" required>
+                </div>
+            </div>
+
 		<input type="submit" id="confirm" value="Conferma">
 	</form>
 </div>

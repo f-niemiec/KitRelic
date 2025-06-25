@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -13,13 +14,13 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class ProductDS implements ProductDAO{
-	public boolean doSave(ProductBean bean) {
+	public int doSave(ProductBean bean) {
 		String query;
 		query = "INSERT INTO " + TABLE_NAME + " (Nome, Prezzo, Quantita, Tipo, Taglia, Tendenza, Nuovo, Descrizione)"
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 		int upp = 0;
 		try(Connection connection = ds.getConnection()){
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setString(1, bean.getName());
 			preparedStatement.setDouble(2, bean.getPrice());
 			preparedStatement.setInt(3, bean.getQuantity());
@@ -30,12 +31,16 @@ public class ProductDS implements ProductDAO{
 			preparedStatement.setString(8, bean.getDescription());
 			upp = preparedStatement.executeUpdate();
 			if(upp > 0) {
-				return true;
+				ResultSet rs = preparedStatement.getGeneratedKeys();
+				if(rs.next()) {
+					int id = rs.getInt(1);
+					return id;
+				}
 			}	
 			} catch (SQLException s) {
 			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
 		}
-		return false;
+		return 0;
 	}
 	
 	public ProductBean doRetrieveByKey(int id) {

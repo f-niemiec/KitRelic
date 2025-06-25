@@ -2,6 +2,7 @@ package control;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,7 +12,7 @@ import model.ProductDS;
 
 import java.io.IOException;
 
-
+@MultipartConfig
 @WebServlet("/AddProductServlet")
 public class AddProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -43,9 +44,12 @@ public class AddProductServlet extends HttpServlet {
 		bean.setPrice(price);
 		
 		ProductDS ds = new ProductDS();
-		ds.doSave(bean);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/resources/admin/productUpload.jsp?success=true");
+		int id = ds.doSave(bean);
+		if(id > 0) {
+			request.setAttribute("productID", id);
+		}
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/UploadPhoto");
 		dispatcher.forward(request, response);
 	}
 

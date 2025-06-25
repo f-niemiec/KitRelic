@@ -31,7 +31,7 @@ public class PhotoDAO {
 	}
 	public synchronized static void updatePhoto(int id, InputStream photo) {
 		String query;
-		query = "UPDATE" + TABLE_NAME + "SET Foto = ? WHERE ID = ?";
+		query = "UPDATE " + TABLE_NAME + " SET Foto = ? WHERE ID = ?";
 		try(Connection connection = ds.getConnection()){
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			try {

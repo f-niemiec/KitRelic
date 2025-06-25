@@ -70,7 +70,7 @@
             <input type="submit" id="invio" value="Registrati">
             
             <div class="footer">
-                Hai già un account? <a href="Login.jsp">Accedi</a>
+                Hai già un account? <a href="${pageContext.request.contextPath}/resources/common/Login.jsp">Accedi</a>
             </div>
         </form>
     </div>

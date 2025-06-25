@@ -3,7 +3,7 @@ package model;
 import java.util.Collection;
 
 public interface ProductDAO {
-	boolean doSave(ProductBean product);
+	int doSave(ProductBean product);
 	ProductBean doRetrieveByKey(int id);
 	Collection<ProductBean> doRetrieveAll(String order);
 	boolean doDelete(int id);

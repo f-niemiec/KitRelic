@@ -48,7 +48,7 @@
             <input type="submit" id="invio" value="Accedi">
             
             <div class="footer">
-                Non hai un account? <a href="${pageContext.request.contextPath}/Registration.jsp">Registrati</a>
+                Non hai un account? <a href="${pageContext.request.contextPath}/resources/common/Registration.jsp">Registrati</a>
             </div>
         </form>
     </div>
