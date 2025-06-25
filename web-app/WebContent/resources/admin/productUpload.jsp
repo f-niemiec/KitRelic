@@ -5,8 +5,80 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Inserisci prodotto</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/upload.css">
+	
 </head>
 <body>
-	
+ <div class="container">
+        <form class="form" action="" method="post">
+            <div class="header">
+                <h2>Inserimento prodotto</h2>
+                <p>Inserisci le informazioni richieste</p>
+            </div>
+                <div class="group">
+                    <label for="name">Nome</label>
+                    <div class="input-wrapper">
+                        <input type="text" name="name" id="name" placeholder="Nome prodotto" required>
+                    </div>
+                    <div id="error-name" class="error">Nome non valido.</div>
+                </div>
+
+				<div class="group">
+                    <label for="description">Descrizione</label>
+                    <div class="input-wrapper">
+                        <textarea name="description" id="description" placeholder="Descrizione del prodotto" rows="6" required></textarea>
+                    </div>
+                    <div id="error-description" class="error">Descrizione non valida.</div>
+                </div>
+            
+            <div class="group">
+                <label for="type">Tipo</label>
+                <div class="input-wrapper">
+                    <input type="text" name="type" id="type" placeholder="Tipo" required>
+                </div>
+                <div id="error-type" class="error">Tipo non valido.</div>
+            </div>
+            
+            <div class="group">
+  			<label>Taglia</label>
+  				<div class="taglie-group">
+    				<label class="tag-size">
+      					<input type="radio" name="taglia" value="XS" required>
+      					<span>XS</span>
+    				</label>
+    				<label class="tag-size">
+      					<input type="radio" name="taglia" value="S">
+      					<span>S</span>
+    				</label>
+    				<label class="tag-size">
+      					<input type="radio" name="taglia" value="M">
+      					<span>M</span>
+    				</label>
+    				<label class="tag-size">
+      					<input type="radio" name="taglia" value="L">
+      					<span>L</span>
+   					</label>
+    				<label class="tag-size">
+      					<input type="radio" name="taglia" value="XL">
+      					<span>XL</span>
+    				</label>
+  				</div>
+			</div>
+            <div id="error-size" class="error">Seleziona una taglia.</div>
+            <div class="group checkbox-row">
+  				<div class="checkbox-col">
+   					<label for="trend">Di tendenza</label>
+    				<input type="checkbox" name="trend" id="trend" value="true">
+  				</div>
+  				<div class="checkbox-col">
+    				<label for="recent">Nuovo arrivo</label>
+    				<input type="checkbox" name="recent" id="recent" value="true">
+  				</div>
+			</div> 
+		<input type="submit" id="confirm" value="Conferma">
+	</form>
+</div>
+
 </body>
 </html>

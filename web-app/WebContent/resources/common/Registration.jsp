@@ -27,7 +27,7 @@
                 </div>
 
 				<div class="group">
-                    <label for="name">Cognome</label>
+                    <label for="surname">Cognome</label>
                     <div class="input-wrapper">
                         <input type="text" name="surname" id="surname" placeholder="Cognome" required>
                     </div>
