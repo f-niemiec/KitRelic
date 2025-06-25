@@ -11,7 +11,7 @@
 </head>
 <body>
  <div class="container">
-        <form class="form" action="" method="post">
+        <form class="form" action="${pageContext.request.contextPath}/AddProductServlet" method="post">
             <div class="header">
                 <h2>Inserimento prodotto</h2>
                 <p>Inserisci le informazioni richieste</p>
@@ -31,7 +31,19 @@
                     </div>
                     <div id="error-description" class="error">Descrizione non valida.</div>
                 </div>
-            
+                
+                <div class="group">
+                    <label for="quantity">Quantità</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="quantity" name="quantity" placeholder="1" min="1" required>
+                    </div>
+                </div>
+             <div class="group">
+                    <label for="price">Prezzo in euro</label>
+                    <div class="input-wrapper">
+                        <input type="number" name="prezzo" step="0.01" min="0" placeholder="15" required>
+                    </div>
+                </div>
             <div class="group">
                 <label for="type">Tipo</label>
                 <div class="input-wrapper">
@@ -43,8 +55,12 @@
             <div class="group">
   			<label>Taglia</label>
   				<div class="taglie-group">
+  					<label class="tag-size">
+      					<input type="radio" name="taglia" value="Unica" required>
+      					<span>Unica</span>
+    				</label>
     				<label class="tag-size">
-      					<input type="radio" name="taglia" value="XS" required>
+      					<input type="radio" name="taglia" value="XS">
       					<span>XS</span>
     				</label>
     				<label class="tag-size">

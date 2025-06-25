@@ -37,7 +37,7 @@ CREATE TABLE MetodoDiPagamento (
     FOREIGN KEY (IDUtente) REFERENCES Utenti(ID)
 );
 
-CREATE TABLE Prodotto (
+CREATE TABLE Prodotti (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(80),
     Prezzo DECIMAL(10,2),
@@ -68,7 +68,7 @@ CREATE TABLE OggettoOrdine (
     ProdottoID INT,
     Quantita INT,
     FOREIGN KEY (OrdineID) REFERENCES Ordini(ID),
-    FOREIGN KEY (ProdottoID) REFERENCES Prodotto(ID)
+    FOREIGN KEY (ProdottoID) REFERENCES Prodotti(ID)
 );
 
 INSERT INTO Utenti (Password, Email, Nome, Cognome, Tipo, DataNascita)
