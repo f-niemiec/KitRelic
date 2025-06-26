@@ -30,15 +30,25 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tables.css">
 </head>
 <body>
+	<h2>Bentornato, ${sessionScope.logname}! </h2>
+	<p>Seleziona l'azione che desideri compiere.</p>
+	<div class="container">
+		<div class="insert">
+			<button onclick="window.location.href='${pageContext.request.contextPath}/resources/admin/productUpload.jsp'">Inserisci prodotto</button>
+		</div>
+		<div class="order">
+			<button onclick="window.location.href='//'">Visualizza ordini utente</button>
+		</div>
+	</div>
 	<%
 		boolean showSuccess = "true".equals(success);
 		if (showSuccess) {
 	%>
-    <div id="success" class="success">Inserimento completato.</div>
+    <div id="success" class="success">Operazione completata.</div>
 	<%
 		}
 	%>
-	<h2>Products</h2>
+	<h2>Prodotti</h2>
 	<table class="catalogo">
 		<tr>
 			<th>Foto</th>
@@ -51,6 +61,7 @@
 			<th>Quantità</th>
 			<th>Di tendenza</th>
 			<th>Nuovo</th>
+			<th>Azioni</th>
 		</tr>
 		<%
 			if (products != null && products.size() != 0) {
@@ -69,13 +80,17 @@
 			<td><%=bean.getQuantity()%></td>
 			<td><%=bean.isTrend()%></td>
 			<td><%=bean.isRecent()%></td>
+			<td>
+				<a href="${pageContext.request.contextPath}/resources/admin/productModify.jsp?action=modify&id=<%=bean.getId()%>">Modifica</a><br>
+				<a href="${pageContext.request.contextPath}/ModifyProductServlet?action=delete&id=<%=bean.getId()%>">Elimina</a><br>
+			</td>
 		</tr>
 		<%
 				}
 			} else {
 		%>
 		<tr>
-			<td colspan="10">No products available</td>
+			<td colspan="11">No products available</td>
 		</tr>
 		<%
 			}

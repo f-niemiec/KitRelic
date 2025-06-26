@@ -7,7 +7,7 @@
 	<title>Inserisci prodotto</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/upload.css">
-	
+	<script src="${pageContext.request.contextPath}/resources/scripts/product.js" defer></script>
 </head>
 <body>
  <div class="container">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
              <div class="group">
-                    <label for="price">Prezzo in euro</label>
+                    <label for="prezzo">Prezzo in euro</label>
                     <div class="input-wrapper">
                         <input type="number" name="prezzo" step="0.01" min="0" placeholder="15" required>
                     </div>

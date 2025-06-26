@@ -174,6 +174,37 @@ public class ProductDS implements ProductDAO{
 
 	    return result > 0;
 	}
+	
+	public boolean doUpdateName(int id, String name) {
+	    String query = "UPDATE " + TABLE_NAME + " SET Nome = ? WHERE ID = ?";
+	    int result = 0;
+	    try (Connection connection = ds.getConnection()) {
+	        PreparedStatement preparedStatement = connection.prepareStatement(query);
+	        preparedStatement.setString(1, name);
+	        preparedStatement.setInt(2, id);
+	        result = preparedStatement.executeUpdate();
+	    } catch (SQLException s) {
+	        System.out.println("Errore durante l'aggiornamento della tendenza: " + s.getMessage());
+	    }
+
+	    return result > 0;
+	}
+	
+	public boolean doUpdateDescription(int id, String desc) {
+	    String query = "UPDATE " + TABLE_NAME + " SET Descrizione = ? WHERE ID = ?";
+	    int result = 0;
+	    try (Connection connection = ds.getConnection()) {
+	        PreparedStatement preparedStatement = connection.prepareStatement(query);
+	        preparedStatement.setString(1, desc);
+	        preparedStatement.setInt(2, id);
+	        result = preparedStatement.executeUpdate();
+	    } catch (SQLException s) {
+	        System.out.println("Errore durante l'aggiornamento della tendenza: " + s.getMessage());
+	    }
+
+	    return result > 0;
+	}
+
 
 	
 	

@@ -7,6 +7,8 @@ public interface ProductDAO {
 	ProductBean doRetrieveByKey(int id);
 	Collection<ProductBean> doRetrieveAll(String order);
 	boolean doDelete(int id);
+	boolean doUpdateName(int id, String name);
+	boolean doUpdateDescription(int id, String desc);
 	boolean doUpdatePrice(int id, double newPrice);
 	boolean doUpdateTrend(int id);
 	boolean doUpdateQuantity(int id, int update);
