@@ -35,7 +35,11 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("logmail", email);
 			session.setAttribute("logtype", user.getTypeByMail(email));
 			session.setAttribute("logname", user.getNameByMail(email));
-			response.sendRedirect("404.jsp"); //Solo come placeholder ovviamente non è un pattern valido
+			if(user.getTypeByMail(email).equals("Admin")) {
+				response.sendRedirect(request.getContextPath() + "/resources/admin/catalogue.jsp");
+			}
+			else
+				response.sendRedirect("404.jsp"); //Solo come placeholder ovviamente non è un pattern valido
 		}
 		else {
 			System.out.println("Tentativo di login fallito per :" + email);

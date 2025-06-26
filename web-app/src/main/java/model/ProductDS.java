@@ -75,7 +75,7 @@ public class ProductDS implements ProductDAO{
 		query = "SELECT * FROM " + TABLE_NAME;
 		Collection<ProductBean> products = new LinkedList<ProductBean>();
 		if(order!=null && !order.equals("")) {
-			query += "ORDER BY " + order;
+			query += " ORDER BY " + order;
 		}
 		try(Connection connection = ds.getConnection()){
 			PreparedStatement preparedStatement = connection.prepareStatement(query);

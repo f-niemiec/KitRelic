@@ -1,6 +1,7 @@
 package control;
 
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -45,6 +46,9 @@ public class UploadPhoto extends HttpServlet {
 				}
 			}
 		}
+		RequestDispatcher dispatcher = this.getServletContext().
+				getRequestDispatcher("/resources/admin/catalogue.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
