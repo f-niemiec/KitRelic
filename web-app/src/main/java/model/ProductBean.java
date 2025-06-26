@@ -6,6 +6,14 @@ public class ProductBean implements Serializable{
 	
 	public ProductBean(){};
 	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -77,6 +85,7 @@ public class ProductBean implements Serializable{
 				+ description + "]";
 	}
 	
+	private int id;
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private double price;

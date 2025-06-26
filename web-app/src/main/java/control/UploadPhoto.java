@@ -32,6 +32,7 @@ public class UploadPhoto extends HttpServlet {
 		    id = (int) idObj;
 		} else {
 			response.sendError(500);
+			return;
 		}
 		for (Part part : request.getParts()) {
 			

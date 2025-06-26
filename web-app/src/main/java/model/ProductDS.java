@@ -34,6 +34,7 @@ public class ProductDS implements ProductDAO{
 				ResultSet rs = preparedStatement.getGeneratedKeys();
 				if(rs.next()) {
 					int id = rs.getInt(1);
+					bean.setId(id);
 					return id;
 				}
 			}	
@@ -45,13 +46,14 @@ public class ProductDS implements ProductDAO{
 	
 	public ProductBean doRetrieveByKey(int id) {
 		String query;
-		query = "SELECT * FROM " + TABLE_NAME + "WHERE ID = ?";
+		query = "SELECT * FROM " + TABLE_NAME + " WHERE ID = ?";
 		ProductBean bean = new ProductBean();
 		try(Connection connection = ds.getConnection()){
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();{
 				while(rs.next()) {
+					bean.setId(rs.getInt("ID"));
 					bean.setName(rs.getString("Nome"));
 					bean.setPrice(rs.getDouble("Prezzo"));
 					bean.setQuantity(rs.getInt("Quantita"));
@@ -80,6 +82,7 @@ public class ProductDS implements ProductDAO{
 			ResultSet rs = preparedStatement.executeQuery();{
 				while(rs.next()) {
 					ProductBean bean = new ProductBean();
+					bean.setId(rs.getInt("ID"));
 					bean.setName(rs.getString("Nome"));
 					bean.setPrice(rs.getDouble("Prezzo"));
 					bean.setQuantity(rs.getInt("Quantita"));
