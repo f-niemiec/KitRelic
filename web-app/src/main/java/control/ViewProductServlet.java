@@ -24,6 +24,11 @@ public class ViewProductServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductDS ds = new ProductDS();
+		String success = request.getParameter("success");
+		if (success != null) {
+		    request.setAttribute("success", success);
+		}
+
 		try {
 			Collection<ProductBean> products = ds.doRetrieveAll("ID");
 			request.setAttribute("products", products);

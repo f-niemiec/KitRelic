@@ -29,7 +29,7 @@ table {
   width: 95%;
   max-width: 100%;
   margin: 0 auto 2% auto;
-  border-collapse: collapse;
+  border-collapse: separate;
   background-color: #e7e1df;
   color: #1d1718;
   font-size: 15px;
@@ -40,10 +40,11 @@ table {
 
 th, td {
   padding: 12px 8px;
-  border: 1px solid #cfc4c0;
+  border: none;
   text-align: center;
   vertical-align: middle;
   word-break: break-word;
+  
 }
 
 th {
@@ -74,6 +75,17 @@ img {
   margin: 0 auto;
   border-radius: 4px;
 }
+
+.success {
+  background-color: #1A936F; 
+  width: 30%;
+  max-width: 30%;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
 
 @media screen and (max-width: 800px) {
   table {

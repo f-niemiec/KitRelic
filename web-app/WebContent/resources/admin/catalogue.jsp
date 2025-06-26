@@ -1,12 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, model.ProductBean"%>
 <%
-	Collection<?> products = (Collection<?>) request.getAttribute("products");
-	if(products == null) {
-		response.sendRedirect(request.getContextPath() + "/ViewProductServlet");
-		return;
-	}
+    Collection<?> products = (Collection<?>) request.getAttribute("products");
+    String success = request.getParameter("success");
+    if (success == null) {
+        Object successAttribute = request.getAttribute("success");
+        if (successAttribute != null) {
+            success = successAttribute.toString();
+        } else {
+            success = "false";
+        }
+    }
+    if(products == null) {
+        if ("true".equals(success)) {
+            response.sendRedirect(request.getContextPath() + "/ViewProductServlet?success=true");
+        } else {
+            response.sendRedirect(request.getContextPath() + "/ViewProductServlet");
+        }
+        return;
+    }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +30,14 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tables.css">
 </head>
 <body>
+	<%
+		boolean showSuccess = "true".equals(success);
+		if (showSuccess) {
+	%>
+    <div id="success" class="success">Inserimento completato.</div>
+	<%
+		}
+	%>
 	<h2>Products</h2>
 	<table class="catalogo">
 		<tr>
@@ -53,7 +75,7 @@
 			} else {
 		%>
 		<tr>
-			<td colspan="6">No products available</td>
+			<td colspan="10">No products available</td>
 		</tr>
 		<%
 			}

@@ -47,7 +47,7 @@ public class UploadPhoto extends HttpServlet {
 			}
 		}
 		RequestDispatcher dispatcher = this.getServletContext().
-				getRequestDispatcher("/resources/admin/catalogue.jsp");
+				getRequestDispatcher("/resources/admin/catalogue.jsp?success=true");
 		dispatcher.forward(request, response);
 	}
 
