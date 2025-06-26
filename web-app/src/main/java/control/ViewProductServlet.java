@@ -30,7 +30,6 @@ public class ViewProductServlet extends HttpServlet {
 			RequestDispatcher dispatcher = this.getServletContext().
 					getRequestDispatcher("/resources/admin/catalogue.jsp");
 			dispatcher.forward(request, response);
-			
 		} catch (Exception e) {
 			System.out.println("Error:" + e.getMessage());
 		}
