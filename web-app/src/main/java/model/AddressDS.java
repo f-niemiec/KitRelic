@@ -33,11 +33,11 @@ public class AddressDS implements AddressDAO{
 				ResultSet rs = preparedStatement.getGeneratedKeys();
 				if(rs.next()) {
 					int id = rs.getInt(1);
-					bean.setUserId(id);
+					bean.setId(id);
 					return id;
 				}
 			}	
-			} catch (SQLException s) {
+		} catch (SQLException s) {
 			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
 		}
 		return 0;
@@ -66,7 +66,7 @@ public class AddressDS implements AddressDAO{
 					addresses.add(bean);
 				}
 			}
-			} catch (SQLException s) {
+		} catch (SQLException s) {
 			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
 		}
 		return addresses;
@@ -116,7 +116,7 @@ public class AddressDS implements AddressDAO{
 					bean.setStreet(rs.getString("Via"));
 				}
 			}
-			} catch (SQLException s) {
+		} catch (SQLException s) {
 			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
 		}
 		return bean;

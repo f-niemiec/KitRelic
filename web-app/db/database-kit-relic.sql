@@ -31,7 +31,6 @@ CREATE TABLE MetodoDiPagamento (
     Scadenza DATE,
     NumeroCarta VARCHAR(20),
     CVV VARCHAR(4),
-    Principale BOOLEAN,
     Proprietario VARCHAR(100),
     IDUtente INT,
     FOREIGN KEY (IDUtente) REFERENCES Utenti(ID)

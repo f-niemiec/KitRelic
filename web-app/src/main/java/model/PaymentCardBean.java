@@ -38,13 +38,6 @@ public class PaymentCardBean implements Serializable{
 		this.cvv = cvv;
 	}
 	
-	public boolean isActive() {
-		return active;
-	}
-	
-	public void setActive(boolean active) {
-		this.active = active;
-	}
 	public String getOwner() {
 		return owner;
 	}
@@ -61,16 +54,11 @@ public class PaymentCardBean implements Serializable{
 		this.userId = userId;
 	}
 	
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 	private static final long serialVersionUID = 1L;
     private int id;
     private LocalDate expires;
     private int cardNumber;
     private int cvv;
-    private boolean active;
     private String owner;
     private int userId;
     
