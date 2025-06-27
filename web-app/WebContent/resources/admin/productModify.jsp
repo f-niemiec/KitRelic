@@ -33,7 +33,7 @@
                 <div class="group">
                     <label for="quantity">Quantità</label>
                     <div class="input-wrapper">
-                        <input type="number" id="quantity" name="quantity" placeholder="1" min="1">
+                        <input type="number" id="quantity" name="quantity" placeholder="1">
                     </div>
                 </div>
              <div class="group">
