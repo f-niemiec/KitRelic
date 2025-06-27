@@ -12,7 +12,7 @@ CREATE TABLE Utenti (
     DataNascita DATE
 );
 
-CREATE TABLE Indirizzo (
+CREATE TABLE Indirizzi (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Tipo ENUM('Billing', 'Shipping') NOT NULL,
     Attivo BOOLEAN,
@@ -59,7 +59,7 @@ CREATE TABLE Ordini (
     IDIndirizzo INT,
     FOREIGN KEY (IdUtente) REFERENCES Utenti(ID),
     FOREIGN KEY (IdCarta) REFERENCES MetodoDiPagamento(IdCarta),
-    FOREIGN KEY (IDIndirizzo) REFERENCES Indirizzo(ID)
+    FOREIGN KEY (IDIndirizzo) REFERENCES Indirizzi(ID)
 );
 
 CREATE TABLE OggettoOrdine (
