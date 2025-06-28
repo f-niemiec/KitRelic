@@ -10,6 +10,13 @@
     <script src="${pageContext.request.contextPath}/resources/scripts/registration.js" defer></script>
 </head>
 <body>
+	<%
+    	if (session.getAttribute("logtype") != null && session.getAttribute("logmail") != null && 
+    			session.getAttribute("logname") != null) {
+        	response.sendRedirect("footer.jsp"); 
+        	return;
+    	}
+	%>
 	<div id="app-root" data-context-path="${pageContext.request.contextPath}"></div>
     <div class="container">
         <form class="form" action="${pageContext.request.contextPath}/RegistrationServlet" method="post" onsubmit="return validate(event)">

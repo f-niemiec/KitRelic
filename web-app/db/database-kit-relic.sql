@@ -55,11 +55,14 @@ CREATE TABLE Ordini (
     Costo DECIMAL(10,2),
     Data DATE,
     IdCarta INT,
+    IDFatturazione INT,
     IDIndirizzo INT,
     FOREIGN KEY (IdUtente) REFERENCES Utenti(ID),
     FOREIGN KEY (IdCarta) REFERENCES MetodoDiPagamento(IdCarta),
+    FOREIGN KEY (IDFatturazione) REFERENCES Indirizzi(ID),
     FOREIGN KEY (IDIndirizzo) REFERENCES Indirizzi(ID)
 );
+
 
 CREATE TABLE OggettoOrdine (
     ItemId INT PRIMARY KEY AUTO_INCREMENT,

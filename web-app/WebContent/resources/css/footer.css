@@ -1,0 +1,163 @@
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #1d1718;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+#footer {
+    background-color: #1d1718;
+    padding: 60px 20px 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.section {
+    flex: 1 1 250px;
+    min-width: 250px;
+    text-align: left;
+}
+
+.section h3 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: #e7e1df;
+    border-bottom: 1px solid #b7a7a1;
+    padding-bottom: 10px;
+}
+
+.section p, .section ul {
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin: 0 0 15px;
+    color: #d1d1d1;
+}
+
+.section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.section li {
+    margin-bottom: 10px;
+}
+
+.section a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.section a:hover {
+    color: #b7a7a1;
+}
+
+.socials {
+    margin-top: 20px;
+}
+
+.socials a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    margin-right: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+}
+
+.socials a:hover {
+    color: #b7a7a1;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+#bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+}
+
+#bottom .legal {
+    margin-bottom: 15px;
+}
+
+#bottom .legal a {
+    color: #ffffff;
+    margin: 0 10px;
+    font-size: 0.85em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#bottom .legal a:hover {
+    color: #b7a7a1;
+}
+
+#bottom p {
+    font-size: 0.75em;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 5px 0 0;
+}
+
+@media (max-width: 770px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .section {
+        margin: 20px 0;
+    }
+}    
+
+@media (max-width: 465px) {
+    #bottom .legal a {
+  		white-space: nowrap;
+	}
+}
+
+@media (max-width: 270px) {
+    .content {
+        padding: 0 5px;
+    }
+
+    .section h3 {
+        font-size: 1.2em;
+    }
+
+    .section p, .section ul, .links a {
+        font-size: 0.75em;
+    }
+
+    .socials a {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9em;
+        margin-right: 6px;
+    }
+
+    #bottom .legal a {
+        display: block;
+        margin: 5px 0;
+        font-size: 0.75em;
+    }
+
+    #bottom p {
+        font-size: 0.65em;
+    }
+}
