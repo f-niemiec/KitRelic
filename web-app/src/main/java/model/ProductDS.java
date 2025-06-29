@@ -70,6 +70,61 @@ public class ProductDS implements ProductDAO{
 		return bean;
 	}
 	
+	public Collection<ProductBean> doRetrieveNew() {
+		String query;
+		query = "SELECT * FROM " + TABLE_NAME + " WHERE Nuovo = TRUE";
+		Collection<ProductBean> products = new LinkedList<ProductBean>();
+		try(Connection connection = ds.getConnection()){
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			ResultSet rs = preparedStatement.executeQuery();{
+				while(rs.next()) {
+					ProductBean bean = new ProductBean();
+					bean.setId(rs.getInt("ID"));
+					bean.setName(rs.getString("Nome"));
+					bean.setPrice(rs.getDouble("Prezzo"));
+					bean.setQuantity(rs.getInt("Quantita"));
+					bean.setType(rs.getString("Tipo"));
+					bean.setSize(rs.getString("Taglia"));
+					bean.setRecent(rs.getBoolean("Nuovo"));
+					bean.setTrend(rs.getBoolean("Tendenza"));
+					bean.setDescription(rs.getString("Descrizione"));
+					products.add(bean);
+				}
+			}
+			} catch (SQLException s) {
+			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
+		}
+		return products;
+	}
+	
+	public Collection<ProductBean> doRetrieveTrend() {
+		String query;
+		query = "SELECT * FROM " + TABLE_NAME + " WHERE Tendenza = TRUE";
+		Collection<ProductBean> products = new LinkedList<ProductBean>();
+		try(Connection connection = ds.getConnection()){
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			ResultSet rs = preparedStatement.executeQuery();{
+				while(rs.next()) {
+					ProductBean bean = new ProductBean();
+					bean.setId(rs.getInt("ID"));
+					bean.setName(rs.getString("Nome"));
+					bean.setPrice(rs.getDouble("Prezzo"));
+					bean.setQuantity(rs.getInt("Quantita"));
+					bean.setType(rs.getString("Tipo"));
+					bean.setSize(rs.getString("Taglia"));
+					bean.setRecent(rs.getBoolean("Nuovo"));
+					bean.setTrend(rs.getBoolean("Tendenza"));
+					bean.setDescription(rs.getString("Descrizione"));
+					products.add(bean);
+				}
+			}
+			} catch (SQLException s) {
+			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
+		}
+		return products;
+	}
+	
+	
 	public Collection<ProductBean> doRetrieveAll(String order){
 		String query;
 		query = "SELECT * FROM " + TABLE_NAME;
