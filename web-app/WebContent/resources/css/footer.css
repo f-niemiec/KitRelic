@@ -8,7 +8,7 @@ body {
 
 #footer {
     background-color: #1d1718;
-    padding: 60px 20px 30px;
+    padding: 0 20px 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -119,9 +119,13 @@ body {
     .content {
         flex-direction: column;
     }
-
+	
+	#section-one {
+		margin: 20px 0 0 0;
+	}
+	
     .section {
-        margin: 20px 0;
+        margin: 0;
     }
 }    
 

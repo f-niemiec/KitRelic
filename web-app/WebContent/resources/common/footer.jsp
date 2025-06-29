@@ -11,7 +11,7 @@
 <body>
 	<footer id="footer">
 		<div class="content">
-			<section class="section">
+			<section class="section"  id="section-one">
 				<h3>KitRelic</h3>
 				<p>Non è vintage. È sacro.</p>
 				<div class="socials">
