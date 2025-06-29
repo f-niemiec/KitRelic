@@ -13,4 +13,5 @@ public interface ProductDAO {
 	boolean doUpdateTrend(int id);
 	boolean doUpdateQuantity(int id, int update);
 	boolean doUpdateNew(int id);
+	public Collection<ProductBean> doRetrieveBySearch(String search);
 }

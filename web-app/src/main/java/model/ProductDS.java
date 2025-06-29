@@ -204,9 +204,36 @@ public class ProductDS implements ProductDAO{
 
 	    return result > 0;
 	}
-
-
 	
+	public Collection<ProductBean> doRetrieveBySearch(String search){
+		String query;
+		query = "SELECT * FROM " + TABLE_NAME + " WHERE Nome LIKE ? OR Descrizione LIKE ?";
+		Collection<ProductBean> products = new LinkedList<ProductBean>();
+		String like = "%" + search + "%";
+		try(Connection connection = ds.getConnection()){
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, like);
+			preparedStatement.setString(2, like);
+			ResultSet rs = preparedStatement.executeQuery();{
+				while(rs.next()) {
+					ProductBean bean = new ProductBean();
+					bean.setId(rs.getInt("ID"));
+					bean.setName(rs.getString("Nome"));
+					bean.setPrice(rs.getDouble("Prezzo"));
+					bean.setQuantity(rs.getInt("Quantita"));
+					bean.setType(rs.getString("Tipo"));
+					bean.setSize(rs.getString("Taglia"));
+					bean.setRecent(rs.getBoolean("Nuovo"));
+					bean.setTrend(rs.getBoolean("Tendenza"));
+					bean.setDescription(rs.getString("Descrizione"));
+					products.add(bean);
+				}
+			}
+		} catch (SQLException s) {
+			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
+		}
+		return products;
+	}	
 	
 	private static DataSource ds;
 	static {

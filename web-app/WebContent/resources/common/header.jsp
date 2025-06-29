@@ -7,6 +7,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/header.css">
+	<script src="${pageContext.request.contextPath}/resources/scripts/header.js"></script>
 </head>
 <body>
 	<%	Cart cart = (Cart) request.getSession().getAttribute("cart");
@@ -27,33 +29,43 @@
 			user = false;
 		}
 	%>
+	<div id="app-root" data-context-path="${pageContext.request.contextPath}"></div>
 	<div class="general-header">
 		<a href="#"><img class="logo" src="${pageContext.request.contextPath}/resources/images/logo.png"></a>
+		
+		<div class="searchbar">
+			<form class="search-form" onsubmit="return false" >
+   				<input type="text" name="search" placeholder="Cerca un'epoca, una squadra, un mito..." aria-label="Search">
+    			<button type="submit"><i class="fa fa-search"></i></button>
+			</form>
+			<div id="search-results" class="search-results"></div>
+		</div>
 		<div class="general-content">
 			<div class="icons">
-								<i class="fa-solid fa-cart-shopping"></i>
+			<i class="fa fa-search search-icon"></i>
+			<i class="fa-solid fa-cart-shopping"></i>
 				<div class="dropdown">
 					<button class="dropdown-menu"><i class="fa-solid fa-circle-user"></i></button>
 					<div class ="dropdown-content">
 						<% if(!user) { %>
 						<a href="${pageContext.request.contextPath}/resources/admin/catalogue.jsp">Catalogo</a>
 						<a href="${pageContext.request.contextPath}/resources/admin/productUpload.jsp">Aggiunta prodotti</a>
+						<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>
 						<a href="#">Storico ordini</a>		
 						<% } else if(mail!=null){ %>
 						<a href="#">Storico ordini</a>
+						<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>
 						<% } else { %>
 						<a href="${pageContext.request.contextPath}/resources/common/Login.jsp">Login</a>
 						<a href="${pageContext.request.contextPath}/resources/common/Registration.jsp">Registrazione</a>
 						<% } %>
-						<a href="${pageContext.request.contextPath}/LogoutServlet"></a>
 					</div>
-					
 				</div>
 			</div>
 		
 			
 			<% if(!user ) { %>
-			<span class="private-area">Area admin</span>
+			<span class="private-area"><a href="${pageContext.request.contextPath}/resources/admin/catalogue.jsp">Area admin</a></span>
 			<% } else if(mail!=null) { %>
 			<span class="private-area">Area personale</span>
 			<% } %>

@@ -115,7 +115,7 @@ body {
     margin: 5px 0 0;
 }
 
-@media (max-width: 770px) {
+@media screen and (max-width: 770px) {
     .content {
         flex-direction: column;
     }
@@ -125,13 +125,13 @@ body {
     }
 }    
 
-@media (max-width: 465px) {
+@media screen and (max-width: 465px) {
     #bottom .legal a {
   		white-space: nowrap;
 	}
 }
 
-@media (max-width: 270px) {
+@media screen and (max-width: 270px) {
     .content {
         padding: 0 5px;
     }
