@@ -31,7 +31,7 @@
 	%>
 	<div id="app-root" data-context-path="${pageContext.request.contextPath}"></div>
 	<div class="general-header">
-		<a href="#"><img class="logo" src="${pageContext.request.contextPath}/resources/images/logo.png"></a>
+		<a href="${pageContext.request.contextPath}/resources/common/index.jsp"><img class="logo" src="${pageContext.request.contextPath}/resources/images/logo.png"></a>
 		
 		<div class="searchbar">
 			<form class="search-form" onsubmit="return false" >

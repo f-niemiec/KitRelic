@@ -23,6 +23,8 @@ public class ProductPage extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String product = request.getParameter("prodId");
+		String novita = request.getParameter("novita");
+		String trend = request.getParameter("trend");
 		if(product == null) {
 			response.sendRedirect(request.getContextPath() + "/resources/common/index.jsp");
 		}
@@ -31,6 +33,14 @@ public class ProductPage extends HttpServlet {
 		try {
 			ProductBean bean = ds.doRetrieveByKey(id);
 			request.setAttribute("productBean", bean);
+			if(novita == null) {
+				Collection<ProductBean> newProd = ds.doRetrieveNew();
+				request.setAttribute("novita", newProd);
+			}
+			if(trend == null) {
+				Collection<ProductBean> trendProd = ds.doRetrieveTrend();
+				request.setAttribute("trend", trendProd);
+			}
 			RequestDispatcher dispatcher = this.getServletContext().
 					getRequestDispatcher("/resources/common/product.jsp");
 			dispatcher.forward(request, response);
