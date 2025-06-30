@@ -12,7 +12,7 @@
 			<div class="container">	
 				<h1>Errore 404 - Pagina non trovata!</h1>
 				<p> La risorsa che stai cercando non esiste. </p>
-				<button>Torna alla home</button>
+				<button onclick="location.href='<%=request.getContextPath()%>/resources/common/index.jsp'">Torna alla home</button>
 			</div>
 		</div>
 	</body>

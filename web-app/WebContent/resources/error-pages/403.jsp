@@ -12,7 +12,7 @@
 			<div class="container">
 				<h1>Errore 403 - Accesso negato!</h1>
 				<p> Non sei autorizzato a visualizzare questa risorsa. </p>
-				<button>Torna alla home</button>
+				<button onclick="location.href='<%=request.getContextPath()%>/resources/common/index.jsp'">Torna alla home</button>
 			</div>
 		</div>
 	</body>

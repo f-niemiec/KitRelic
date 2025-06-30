@@ -12,7 +12,7 @@
 			<div class="container">	
 				<h1>Errore 500 - Errore del server!</h1>
 				<p> Si è verificato un errore inatteso, si prega di riprovare. </p>
-				<button>Torna alla home</button>
+				<button onclick="location.href='<%=request.getContextPath()%>/resources/common/index.jsp'">Torna alla home</button>
 			</div>
 		</div>
 	</body>

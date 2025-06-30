@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <strong>${prod.name}</strong><br>
                 <small>${prod.size}</small><br>
                 <small>${prod.description}</small><br>
-                Prezzo: €${prod.price}
+                Prezzo: ${prod.price.toFixed(2)}€
               </div>
             `).join('');
           }
