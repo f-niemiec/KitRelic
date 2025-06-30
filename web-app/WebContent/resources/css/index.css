@@ -66,6 +66,11 @@
     font-size: 14px;
 }
 
+.product-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 @media screen and (max-width: 950px) {
     .product-card {
         flex: 0 0 33%;

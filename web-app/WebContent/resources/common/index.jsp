@@ -28,12 +28,14 @@
                         ProductBean bean = (ProductBean) obj;
                 %>
                 <div class="product-card">
-                    <div class="img-wrapper">
-                        <img src="ViewPhotoServlet?id=<%=bean.getId()%>" alt="<%=bean.getName()%>">
-                    </div>
-                    <span class="product-name"><%=bean.getName()%></span>
-                    <span class="product-size"><%=bean.getSize()%></span>
-                    <span class="product-price"><%= String.format("%.2f", bean.getPrice()) %>€</span>
+                	<a href="ProductPage?prodId=<%=bean.getId()%>" class="product-card-link">
+                    	<div class="img-wrapper">
+                        	<img src="ViewPhotoServlet?id=<%=bean.getId()%>" alt="<%=bean.getName()%>">
+                    	</div>
+                    	<span class="product-name"><%=bean.getName()%></span>
+                    	<span class="product-size"><%=bean.getSize()%></span>
+                    	<span class="product-price"><%= String.format("%.2f", bean.getPrice()) %>€</span>
+                	</a>
                 </div>
                 <%
                     }
