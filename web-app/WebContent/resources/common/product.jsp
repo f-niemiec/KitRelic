@@ -38,7 +38,8 @@
 			<span class="productSize"><%=product.getSize()%></span>
 			<span class="productPrice"><%= String.format("%.2f", product.getPrice()) %>€</span>
 			<% if(product.getQuantity() > 0) { %>
-			<form action="${pageContext.request.contextPath}/" method="post" class="cartForm">
+			<form action="${pageContext.request.contextPath}/CartControlServlet" method="post" class="cartForm">
+				<input type="hidden" name="action" value="add">
 				<input type="hidden" name="productId" value="<%= product.getId() %>">
 				<label for="quantity" class="quantity">Quantità:</label>
 				<input type="number" name="quantity" id="quantity" class="quantitySelect" min="1" value="1" placeholder="1" max="<%=product.getQuantity()%>">

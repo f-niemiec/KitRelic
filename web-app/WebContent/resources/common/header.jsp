@@ -43,7 +43,9 @@
 		<div class="general-content">
 			<div class="icons">
 			<i class="fa fa-search search-icon"></i>
-			<i class="fa-solid fa-cart-shopping"></i>
+			<a href="${pageContext.request.contextPath}/resources/common/cart.jsp">
+				<i class="fa-solid fa-cart-shopping"></i>
+			</a>
 				<div class="dropdown">
 					<button class="dropdown-menu"><i class="fa-solid fa-circle-user"></i></button>
 					<div class ="dropdown-content">

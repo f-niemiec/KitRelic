@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Cart {
@@ -20,11 +21,13 @@ public class Cart {
 	}
 	
 	public void deleteProduct(ProductBean product) {
-		for(CartItemBean item : products) {
-			if(item.getId() == product.getId()) {
-				products.remove(item);
-			}
-		}
+	    Iterator<CartItemBean> iterator = products.iterator();
+	    while (iterator.hasNext()) {
+	        CartItemBean item = iterator.next();
+	        if (item.getId() == product.getId()) {
+	            iterator.remove(); 
+	        }
+	    }
 	}
 	
 	public List<CartItemBean> getCart(){
