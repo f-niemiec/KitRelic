@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             resultsContainer.innerHTML = '<div class="product-result">Nessun risultato trovato</div>';
           } else {
             resultsContainer.innerHTML = data.map(prod => `
-              <div class="product-result" onclick="window.location.href='productDetail.jsp?code=${prod.id}'">
+              <div class="product-result" onclick="window.location.href='${contextPath}/ProductPage?prodId=${prod.id}'">
                 <strong>${prod.name}</strong><br>
                 <small>${prod.size}</small><br>
                 <small>${prod.description}</small><br>
