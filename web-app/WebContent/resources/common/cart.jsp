@@ -43,7 +43,7 @@
                 <span class="product-name"><%=bean.getName()%></span>
                 <span class="product-size"><%=bean.getSize()%></span>
                 <span class="product-price"><%= String.format("%.2f", bean.getPrice()) %>€</span>
-                <span class="product-quantity"><%= bean.getQuantity()%></span>
+                <span class="product-quantity">Quantità: <%= bean.getQuantity()%></span>
                 <% if (bean.getQuantity() > 1) {%>
               	<form action="${pageContext.request.contextPath}/CartControlServlet" method="post">
               		 <input type="hidden" name="fromCart" value="true">
@@ -71,10 +71,27 @@
                      </button>
                 </form>
                 <% } %>
+                <form action="${pageContext.request.contextPath}/CartControlServlet" method="post">
+                	 <input type="hidden" name="fromCart" value="true">
+                	 <input type="hidden" name="action" value="clear">
+                     <input type="submit" value="Svuota carrello">
+                </form>
 			</div>
 			<% } else {%>
 				<div class="empty-cart">Non sono presenti prodotti.</div>
 			<% } %>
+		</div>
+		<div class="recap">
+			<h2 class="recap-name">Il tuo ordine</h2>
+			<div class="shipping">
+				<p class="shipping-cost">Costo di spedizione stimato: GRATIS</p>
+			</div>
+			<div class="subtotal-cost">
+				<p class="subtotal">Subtotale: <%=String.format("%.2f", cart.getTotalPrice()) %>€</p> 
+			</div>
+			<div class="total-cost">
+				<p class="total">Totale: <%=String.format("%.2f", cart.getTotalPrice()+0)%>€</p> 
+			</div>
 		</div>
 	</div>
 </body>

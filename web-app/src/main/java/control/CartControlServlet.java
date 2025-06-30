@@ -110,6 +110,21 @@ public class CartControlServlet extends HttpServlet {
 					return;
 				}
 			}
+			if(action.equalsIgnoreCase("clear")) {
+				cart.clear();
+				if(request.getParameter("fromCart")!=null && request.getParameter("fromCart")
+						.equalsIgnoreCase("true")) {
+					RequestDispatcher dispatcher = this.getServletContext().
+							getRequestDispatcher("/resources/common/cart.jsp");
+					dispatcher.forward(request, response);
+					return;
+				} else {
+					RequestDispatcher dispatcher = this.getServletContext().
+							getRequestDispatcher("/resources/common/product.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
+			}
 		}
 		
 		double total = cart.getTotalPrice();
