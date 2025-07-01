@@ -77,3 +77,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.querySelector(".cart-icon-wrapper");
+  const badge = document.getElementById("cart-count");
+  const size = parseInt(wrapper.getAttribute("data-cart-size")) || 0;
+
+  if (size > 0) {
+    badge.textContent = size.toString();
+    badge.style.display = "flex";
+  } else {
+    badge.style.display = "none";
+  }
+});
+
+

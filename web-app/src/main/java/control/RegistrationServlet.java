@@ -47,7 +47,7 @@ public class RegistrationServlet extends HttpServlet {
 		boolean success = rds.insertUser(bean);
 		if(success) {
 			HttpSession session = request.getSession();
-			response.sendRedirect("Login.jsp");
+			response.sendRedirect(request.getContextPath() + "/resources/common/Login.jsp");
 		} else {
 			response.sendRedirect("404.jsp");
 		}

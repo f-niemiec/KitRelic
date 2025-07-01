@@ -43,8 +43,10 @@
 		<div class="general-content">
 			<div class="icons">
 			<i class="fa fa-search search-icon"></i>
-			<a href="${pageContext.request.contextPath}/resources/common/cart.jsp">
+			<a href="${pageContext.request.contextPath}/resources/common/cart.jsp" 
+				class="cart-icon-wrapper" data-cart-size="<%= (cart != null) ? cart.getSize() : 0 %>">
 				<i class="fa-solid fa-cart-shopping"></i>
+				<div id="cart-count" class="cart-count"></div>
 			</a>
 				<div class="dropdown">
 					<button class="dropdown-menu"><i class="fa-solid fa-circle-user"></i></button>

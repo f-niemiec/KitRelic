@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/resources/admin/catalogue.jsp");
 			}
 			else
-				response.sendRedirect("404.jsp"); //Solo come placeholder ovviamente non è un pattern valido
+				response.sendRedirect(request.getContextPath() + "/resources/common/index.jsp");
 		}
 		else {
 			System.out.println("Tentativo di login fallito per :" + email);
