@@ -53,7 +53,7 @@
             <div class="group">
                 <label for="date">Data di nascita</label>
                 <div class="input-wrapper">
-                    <input type="date" name="date" id="date" required>
+                    <input type="date" name="date" id="date" max="<%= java.time.LocalDate.now() %>" required>
                 </div>
                 <div id="error-date" class="error">Data non valida.</div>
             </div>

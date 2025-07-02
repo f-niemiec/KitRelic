@@ -22,19 +22,19 @@ public class PaymentCardBean implements Serializable{
 		this.expires = expires;
 	}
 	
-	public int getCardNumber() {
+	public String getCardNumber() {
 		return cardNumber;
 	}
 	
-	public void setCardNumber(int cardNumber) {
+	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 	
-	public int getCvv() {
+	public String getCvv() {
 		return cvv;
 	}
 	
-	public void setCvv(int cvv) {
+	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
 	
@@ -57,8 +57,8 @@ public class PaymentCardBean implements Serializable{
 	private static final long serialVersionUID = 1L;
     private int id;
     private LocalDate expires;
-    private int cardNumber;
-    private int cvv;
+    private String cardNumber;
+    private String cvv;
     private String owner;
     private int userId;
     

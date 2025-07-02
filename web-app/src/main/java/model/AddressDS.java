@@ -15,33 +15,31 @@ import javax.sql.DataSource;
 
 public class AddressDS implements AddressDAO{
 	public int doSave(AddressBean bean) {
-		String query;
-		query = "INSERT INTO " + TABLE_NAME + " (Tipo, Attivo, Citta, Via, Provincia, Paese, CodUtente)"
-				+ "VALUES(?, ?, ?, ?, ?, ?, ?)";
-		int upp = 0;
-		try(Connection connection = ds.getConnection()){
-			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			preparedStatement.setString(1, bean.getAddress().name());
-			preparedStatement.setBoolean(2, bean.isActive());
-			preparedStatement.setString(3, bean.getCity());
-			preparedStatement.setString(4, bean.getStreet());
-			preparedStatement.setString(5, bean.getProvince());
-			preparedStatement.setString(6, bean.getCountry());
-			preparedStatement.setInt(7, bean.getUserId());
-			upp = preparedStatement.executeUpdate();
-			if(upp > 0) {
-				ResultSet rs = preparedStatement.getGeneratedKeys();
-				if(rs.next()) {
-					int id = rs.getInt(1);
-					bean.setId(id);
-					return id;
-				}
-			}	
-		} catch (SQLException s) {
-			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
-		}
-		return 0;
-	}
+		String query = "INSERT INTO " + TABLE_NAME + " (Tipo, Attivo, Citta, Via, Provincia, Paese, CodUtente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try(Connection connection = ds.getConnection();
+        	PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, bean.getAddress().name());
+            preparedStatement.setBoolean(2, bean.isActive());
+            preparedStatement.setString(3, bean.getCity());
+            preparedStatement.setString(4, bean.getStreet());
+            preparedStatement.setString(5, bean.getProvince());
+            preparedStatement.setString(6, bean.getCountry());
+            preparedStatement.setInt(7, bean.getUserId());
+            int result = preparedStatement.executeUpdate();
+            if (result > 0) {
+                try (ResultSet rs = preparedStatement.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        int id = rs.getInt(1);
+                        bean.setId(id);
+                        return id;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 	
 	public Collection<AddressBean> doRetrieveAll(String order){
 		String query;
@@ -231,34 +229,34 @@ public class AddressDS implements AddressDAO{
 	}
 	
 	public void doUpdateActive(int id) {
-	    String getUserQuery = "SELECT CodUtente FROM " + TABLE_NAME + " WHERE ID = ?";
-	    String disableOthersQuery = "UPDATE " + TABLE_NAME + " SET Attivo = FALSE WHERE CodUtente = ? AND Attivo = TRUE";
+		String getUserAndTypeQuery = "SELECT CodUtente, Tipo FROM " + TABLE_NAME + " WHERE ID = ?";
+	    String disableSameTypeQuery = "UPDATE " + TABLE_NAME + " SET Attivo = FALSE WHERE CodUtente = ? AND Tipo = ? AND Attivo = TRUE";
 	    String activateQuery = "UPDATE " + TABLE_NAME + " SET Attivo = TRUE WHERE ID = ?";
-	    
 	    try (Connection connection = ds.getConnection()) {
 	        int userId = -1;
-	        try (PreparedStatement psGetUser = connection.prepareStatement(getUserQuery)) {
-	            psGetUser.setInt(1, id);
-	            try (ResultSet rs = psGetUser.executeQuery()) {
+	        String tipo = null;
+	        try (PreparedStatement psGet = connection.prepareStatement(getUserAndTypeQuery)) {
+	            psGet.setInt(1, id);
+	            try (ResultSet rs = psGet.executeQuery()) {
 	                if (rs.next()) {
 	                    userId = rs.getInt("CodUtente");
+	                    tipo = rs.getString("Tipo");
 	                } else {
-	                    System.out.println("Indirizzo non trovato con ID: " + id);
 	                    return;
 	                }
 	            }
 	        }
-	        try (PreparedStatement psDisableOthers = connection.prepareStatement(disableOthersQuery)) {
-	            psDisableOthers.setInt(1, userId);
-	            psDisableOthers.executeUpdate();
+	        try (PreparedStatement psDisable = connection.prepareStatement(disableSameTypeQuery)) {
+	            psDisable.setInt(1, userId);
+	            psDisable.setString(2, tipo);
+	            psDisable.executeUpdate();
 	        }
-
 	        try (PreparedStatement psActivate = connection.prepareStatement(activateQuery)) {
 	            psActivate.setInt(1, id);
 	            psActivate.executeUpdate();
 	        }
 	    } catch (SQLException e) {
-	        System.out.println("Si è verificato il seguente errore: " + e.getMessage());
+	        System.out.println("Si è verificato un errore: " + e.getMessage());
 	    }
 	}
 
