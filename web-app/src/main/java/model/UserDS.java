@@ -77,8 +77,23 @@ public class UserDS implements UserDAO{
 		}
 	}
 	
-	
-	
+	public static int getIDByMail(String email) {
+		String query;
+		query = "SELECT * FROM " + TABLE_NAME + " WHERE Email = ?";
+		try(Connection connection = ds.getConnection()){
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, email);
+			try(ResultSet rs = preparedStatement.executeQuery()){
+				if(rs.next()) {
+					return rs.getInt("ID");
+				}
+			}
+			
+		} catch (SQLException s) {
+			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
+		}
+		return 0;
+	}
 	
 	private static DataSource ds;
 	static {

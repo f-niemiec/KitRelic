@@ -16,6 +16,10 @@
         	response.sendRedirect("footer.jsp"); 
         	return;
     	}
+		String fromCart = request.getParameter("fromCart");
+		if(fromCart == null){
+			fromCart = "false";
+		}
 	%>
 	<div id="app-root" data-context-path="${pageContext.request.contextPath}"></div>
     <div class="container">

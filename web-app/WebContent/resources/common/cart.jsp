@@ -111,7 +111,8 @@
             </div>
             <% if (!cart.isEmpty()) { %>
             <div class="checkout">
-                <form action="${pageContext.request.contextPath}/" method="post">
+                <form action="${pageContext.request.contextPath}/resources/common/checkout.jsp" method="post">
+                	<input type="hidden" name="totalValue" value="<%= String.format("%.2f", cart.getTotalPrice()) %>">
                     <input type="submit" class="invio" value="Procedi al checkout">
                 </form>
             </div>

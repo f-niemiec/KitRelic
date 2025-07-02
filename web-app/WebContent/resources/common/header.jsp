@@ -54,8 +54,8 @@
 						<% if(!user) { %>
 						<a href="${pageContext.request.contextPath}/resources/admin/catalogue.jsp">Catalogo</a>
 						<a href="${pageContext.request.contextPath}/resources/admin/productUpload.jsp">Aggiunta prodotti</a>
-						<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>
-						<a href="#">Storico ordini</a>		
+						<a href="#">Storico ordini</a>	
+						<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>	
 						<% } else if(mail!=null){ %>
 						<a href="#">Storico ordini</a>
 						<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>

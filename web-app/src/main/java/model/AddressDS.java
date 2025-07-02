@@ -72,6 +72,62 @@ public class AddressDS implements AddressDAO{
 		return addresses;
 	}
 	
+	public Collection<AddressBean> doRetrieveBilling(int userId){
+		String query;
+		query = "SELECT * FROM " + TABLE_NAME + " WHERE CodUtente = ? AND Tipo = ?";
+		Collection<AddressBean> addresses = new LinkedList<AddressBean>();
+		try(Connection connection = ds.getConnection()){
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, userId);
+			preparedStatement.setString(2, TipoIndirizzo.Billing.name());
+			ResultSet rs = preparedStatement.executeQuery();{
+				while(rs.next()) {
+					AddressBean bean = new AddressBean();
+					bean.setId(rs.getInt("ID"));
+					bean.setUserId(rs.getInt("CodUtente"));
+					bean.setActive(rs.getBoolean("Attivo"));
+					bean.setAddress(TipoIndirizzo.valueOf(rs.getString("Tipo")));
+					bean.setCity(rs.getString("Citta"));
+					bean.setCountry(rs.getString("Paese"));
+					bean.setProvince(rs.getString("Provincia"));
+					bean.setStreet(rs.getString("Via"));
+					addresses.add(bean);
+				}
+			}
+		} catch (SQLException s) {
+			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
+		}
+		return addresses;
+	}
+	
+	public Collection<AddressBean> doRetrieveShipping(int userId){
+		String query;
+		query = "SELECT * FROM " + TABLE_NAME + " WHERE CodUtente = ? AND Tipo = ?";
+		Collection<AddressBean> addresses = new LinkedList<AddressBean>();
+		try(Connection connection = ds.getConnection()){
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, userId);
+			preparedStatement.setString(2, TipoIndirizzo.Shipping.name());
+			ResultSet rs = preparedStatement.executeQuery();{
+				while(rs.next()) {
+					AddressBean bean = new AddressBean();
+					bean.setId(rs.getInt("ID"));
+					bean.setUserId(rs.getInt("CodUtente"));
+					bean.setActive(rs.getBoolean("Attivo"));
+					bean.setAddress(TipoIndirizzo.valueOf(rs.getString("Tipo")));
+					bean.setCity(rs.getString("Citta"));
+					bean.setCountry(rs.getString("Paese"));
+					bean.setProvince(rs.getString("Provincia"));
+					bean.setStreet(rs.getString("Via"));
+					addresses.add(bean);
+				}
+			}
+		} catch (SQLException s) {
+			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
+		}
+		return addresses;
+	}
+	
 	public AddressBean doRetrieveByKey(int id) {
 			String query;
 			query = "SELECT * FROM " + TABLE_NAME + " WHERE ID = ?";
@@ -104,6 +160,58 @@ public class AddressDS implements AddressDAO{
 		try(Connection connection = ds.getConnection()){
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, userId);
+			ResultSet rs = preparedStatement.executeQuery();{
+				while(rs.next()) {
+					bean.setId(rs.getInt("ID"));
+					bean.setUserId(rs.getInt("CodUtente"));
+					bean.setActive(rs.getBoolean("Attivo"));
+					bean.setAddress(TipoIndirizzo.valueOf(rs.getString("Tipo")));
+					bean.setCity(rs.getString("Citta"));
+					bean.setCountry(rs.getString("Paese"));
+					bean.setProvince(rs.getString("Provincia"));
+					bean.setStreet(rs.getString("Via"));
+				}
+			}
+		} catch (SQLException s) {
+			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
+		}
+		return bean;
+	}
+	
+	public AddressBean doRetrieveActiveBilling(int userId) {
+		String query;
+		query = "SELECT * FROM " + TABLE_NAME + " WHERE CodUtente = ? And Tipo = ? AND Attivo";
+		AddressBean bean = new AddressBean();
+		try(Connection connection = ds.getConnection()){
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, userId);
+			preparedStatement.setString(2, TipoIndirizzo.Billing.name());
+			ResultSet rs = preparedStatement.executeQuery();{
+				while(rs.next()) {
+					bean.setId(rs.getInt("ID"));
+					bean.setUserId(rs.getInt("CodUtente"));
+					bean.setActive(rs.getBoolean("Attivo"));
+					bean.setAddress(TipoIndirizzo.valueOf(rs.getString("Tipo")));
+					bean.setCity(rs.getString("Citta"));
+					bean.setCountry(rs.getString("Paese"));
+					bean.setProvince(rs.getString("Provincia"));
+					bean.setStreet(rs.getString("Via"));
+				}
+			}
+		} catch (SQLException s) {
+			System.out.println("Si è verificato il seguente errore: " + s.getMessage());
+		}
+		return bean;
+	}
+	
+	public AddressBean doRetrieveActiveShipping(int userId) {
+		String query;
+		query = "SELECT * FROM " + TABLE_NAME + " WHERE CodUtente = ? AND Tipo = ? AND Attivo";
+		AddressBean bean = new AddressBean();
+		try(Connection connection = ds.getConnection()){
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, userId);
+			preparedStatement.setString(2, TipoIndirizzo.Shipping.name());
 			ResultSet rs = preparedStatement.executeQuery();{
 				while(rs.next()) {
 					bean.setId(rs.getInt("ID"));
