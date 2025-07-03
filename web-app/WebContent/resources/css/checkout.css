@@ -1,7 +1,289 @@
-div.error {
-	display: none;
+.color-insert {
+	display: flex;
+    gap: 30px;
+    padding: 20px;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #e7e1df;
+    color: #1d1718;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+.checkout-wrapper {
+  	display: flex;
+  	flex-wrap: wrap;
+  	gap: 30px;
+  	align-items: flex-start;
+  	background-color: #e7e1df;
+  	padding: 20px;
+  	box-sizing: border-box;
+}
+
+.color-insert {
+  	flex: 1 1 600px;
+  	display: flex;
+  	flex-direction: column;
+  	gap: 30px;
+}
+
+
+.billing-address, .shipping-address, .payment-method {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.1);
+    padding: 20px 25px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    width: 100%;
+    position: relative; 
+}
+
+.billing-title, .shipping-title, .payment-method h3 {
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-left: 4px solid #cfc4c0;
+    padding-left: 10px;
+    color: #1d1718;
+}
+
+.billing-address table, .shipping-address table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.billing-address th, .shipping-address th, .billing-address td, .shipping-address td {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 1px solid #ccc;
+    font-size: 0.95em;
+    color: #1d1718;
+}
+
+.billing-address th, .shipping-address th {
+    font-weight: 700;
+}
+
+.billing-address input[type="text"], .shipping-address input[type="text"], .payment-method input[type="text"],
+.payment-method input[type="password"], .payment-method input[type="date"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border: 1px solid #cfc4c0;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    color: #1d1718;
+    background-color: #fefefe;
+    transition: border-color 0.3s ease;
+}
+
+.billing-address input[type="text"]:focus, .shipping-address input[type="text"]:focus, 
+.payment-method input[type="text"]:focus, .payment-method input[type="password"]:focus, 
+.payment-method input[type="date"]:focus {
+    outline: none;
+    border-color: #1d1718;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    color: #1d1718;
+}
+
+input[type="submit"] {
+    background-color: #1d1718;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #3a3132;
+}
+
+.error {
+    display: none;
     font-size: 12px;
     font-weight: bold;
     color: #a5243d;
     margin-bottom: 6px;
+}
+
+.order-button {
+    margin-top: 15px;
+}
+
+.payment-method label input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+
+.payment-method form {
+    position: relative;
+    padding-top: 50px; 
+}
+
+.payment-method form > label:first-of-type {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    background-color: #e7e1df;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: 700;
+    color: #1d1718;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.payment-method form > label:first-of-type:hover {
+    background-color: #d4cdc9;
+}
+
+#address-missing {
+	display: none;
+    font-size: 14px;
+    font-weight: 700;
+    color: #a5243d;
+    margin-bottom: 12px;
+}
+
+.cart-container {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #e7e1df;
+  color: #1d1718;
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+.prod-container {
+  flex: 2 1 auto;
+  min-width: 300px;
+  max-width: 65%;
+}
+
+.recap {
+  flex: 1 1 auto;
+  min-width: 250px;
+  max-width: 35%;
+  background-color: #fff;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 7px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  position: sticky;
+  top: 20px;
+}
+
+.cart-summary {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.1);
+    padding: 20px 25px;
+    max-width: 600px;
+    width: 100%;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #1d1718;
+    margin-top: 18px;
+    margin-bottom: 50px;
+    margin-right: 60px;
+    box-sizing: border-box;
+    flex: 0 0 350px; 
+  	position: sticky;
+  	top: 20px;
+}
+
+.cart-summary h3 {
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-left: 4px solid #cfc4c0;
+    padding-left: 10px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.cart-table th, .cart-table td {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 1px solid #ccc;
+    font-size: 0.95em;
+    color: #1d1718;
+}
+
+.cart-table th {
+    font-weight: 700;
+    background-color: #f7f2f0;
+}
+
+.product-name {
+    font-weight: 600;
+}
+
+.subtotal-cost p {
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: right;
+    margin: 0;
+    padding-top: 10px;
+    color: #1d1718;
+}
+
+@media (max-width: 740px) {
+  .cart-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .prod-container, .recap {
+    width: 100%;
+    max-width: 100%;
+    min-width: unset;
+  }
+}
+
+
+
+@media (max-width: 740px) {
+    .billing-address, .shipping-address, .payment-method {
+        max-width: 100%;
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    input[type="submit"] {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 1em;
+    }
 }

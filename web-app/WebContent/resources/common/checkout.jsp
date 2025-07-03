@@ -35,10 +35,12 @@
     <title>Checkout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="${pageContext.request.contextPath}/resources/scripts/checkout.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/header.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/checkout.css">
 </head>
 <body>
 <%@ include file="header.jsp"%>
+<div class="checkout-wrapper">
+<div class="color-insert">
 <div class="billing-address">
     <h3 class="billing-title">Indirizzo di fatturazione</h3>
     <%
@@ -68,17 +70,17 @@
         <input type="hidden" name="addressType" value="Billing">
         <input type="hidden" name="userID" value="<%=userId%>">
         <label>Città:</label>
-        <input type="text" name="city" required><br/><br/>
+        <input type="text" name="city" required>
         <div class="error" id="error-city" style="display: none;">Città non valida</div>
         <label>Via:</label>
-        <input type="text" name="street" required><br/><br/>
-        <div class="error" id="error-street" style="display: none;">Via non valida</div><br/>
+        <input type="text" name="street" required>
+        <div class="error" id="error-street" style="display: none;">Via non valida</div>
         <label>Provincia:</label>
-        <input type="text" name="province" required><br/><br/>
-        <div class="error" id="error-province" style="display: none;">Provincia non valida</div><br/>
+        <input type="text" name="province" required>
+        <div class="error" id="error-province" style="display: none;">Provincia non valida</div>
         <label>Paese:</label>
-        <input type="text" name="country" required><br/><br/>
-        <div class="error" id="error-country" style="display: none;">Paese non valido</div><br/>
+        <input type="text" name="country" required>
+        <div class="error" id="error-country" style="display: none;">Paese non valido</div>
         <input type="submit" value="Inserisci" />
     </form>
     <% } %>
@@ -113,17 +115,17 @@
         <input type="hidden" name="addressType" value="Shipping">
         <input type="hidden" name="userID" value="<%=userId%>">
         <label>Città:</label>
-        <input type="text" name="city" required><br/><br/>
-        <div class="error" id="error-city" style="display: none;">Città non valida</div><br/>
+        <input type="text" name="city" required>
+        <div class="error" id="error-city" style="display: none;">Città non valida</div>
         <label>Via:</label>
-        <input type="text" name="street" required><br/><br/>
-        <div class="error" id="error-street" style="display: none;">Via non valida</div><br/>
+        <input type="text" name="street" required>
+        <div class="error" id="error-street" style="display: none;">Via non valida</div>
         <label>Provincia:</label>
-        <input type="text" name="province" required><br/><br/>
-        <div class="error" id="error-province" style="display: none;">Provincia non valida</div><br/>
+        <input type="text" name="province" required>
+        <div class="error" id="error-province" style="display: none;">Provincia non valida</div>
         <label>Paese:</label>
-        <input type="text" name="country" required><br/><br/>
-        <div class="error" id="error-country" style="display: none;">Paese non valido</div><br/>
+        <input type="text" name="country" required>
+        <div class="error" id="error-country" style="display: none;">Paese non valido</div>
         <input type="submit" value="Inserisci" />
     </form>
     <% } %>
@@ -140,28 +142,64 @@
         <input type="hidden" name="userID" value="<%=userId%>">
         <input type="hidden" id="billingSaved" value="<%= billingSaved %>"/>
 		<input type="hidden" id="shippingSaved" value="<%= shippingSaved %>"/>
-		<div class="error" id="address-missing" style="display: none;">Indirizzo mancante</div><br/>
         <label>
-            <input type="checkbox" id="sameAsBilling" name="sameAsBilling" onchange="toggleShippingForm()" />
+            <input type="checkbox" id="sameAsBilling" name="sameAsBilling" onchange="toggleShippingForm()">
             Usa lo stesso indirizzo per la spedizione
         </label><br/>
         <h3>Inserisci un nuovo metodo di pagamento</h3>
         <label for="cardNumber">Numero di carta:</label>
-        <input type="text" id="cardNumber" name="cardNumber" maxlength="16" required><br/>
-        <div class="error" id="error-card" style="display: none;">Numero carta non valido</div><br/>
+        <input type="text" id="cardNumber" name="cardNumber" maxlength="16" required>
+        <div class="error" id="error-card" style="display: none;">Numero carta non valido</div>
         <label for="owner">Proprietario:</label>
-        <input type="text" id="owner" name="owner" required><br/>
-        <div class="error" id="error-owner" style="display: none;">Nome non valido</div><br/>
+        <input type="text" id="owner" name="owner" required>
+        <div class="error" id="error-owner" style="display: none;">Nome non valido</div>
         <label for="expires">Data Scadenza (YYYY-MM-DD):</label>
-        <input type="date" id="expires" name="expires" required><br/>
-        <div class="error" id="error-expires" style="display: none;">Data scadenza mancante</div><br/>
+        <input type="date" id="expires" name="expires" required>
+        <div class="error" id="error-expires" style="display: none;">Data scadenza mancante</div>
         <label for="cvv">CVV:</label>
-        <input type="password" id="cvv" name="cvv" maxlength="4" required><br/>
-        <div class="error" id="error-cvv" style="display: none;">CVV non valido</div><br/>
+        <input type="password" id="cvv" name="cvv" maxlength="4" required>
+        <div class="error" id="error-cvv" style="display: none;">CVV non valido</div>
+        <div class="error" id="address-missing" style="display: none;">Indirizzo di spedizione o fatturazione 
+        mancante</div>
         <div class="order-button">
             <input type="submit" value="Procedi all'acquisto" />
         </div>
     </form>
+</div>
+
+</div>
+<div class="cart-summary">
+    <h3>Riepilogo Carrello</h3>
+    <%
+        if(cart != null && !cart.isEmpty()) {
+    %>
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Prodotto</th>
+                <th>Taglia</th>
+                <th>Quantità</th>
+                <th>Prezzo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%
+                for (CartItemBean item : cart.getCart()) {
+            %>
+            <tr>
+                <td class="product-name"><%=item.getName()%></td>
+                <td><%=item.getSize()%></td>
+                <td><%=item.getQuantity()%></td>
+                <td><%=String.format("%.2f", item.getPrice()) %>€</td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <div class="subtotal-cost">
+        <p>Subtotale: <%= String.format("%.2f", cart.getTotalPrice()) %>€</p>
+    </div>
+    <% } %>
+</div>
 </div>
 <%@ include file="footer.jsp"%>
 </body>
