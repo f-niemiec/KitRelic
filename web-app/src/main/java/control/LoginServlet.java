@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String fromCartString = request.getParameter("fromCart");
-		boolean fromCart = Boolean.parseBoolean(fromCartString);
+		boolean fromCart = "true".equalsIgnoreCase(fromCartString);
 		LoginBean bean = new LoginBean();
 		bean.setEmail(email);
 		bean.setPassword(password);

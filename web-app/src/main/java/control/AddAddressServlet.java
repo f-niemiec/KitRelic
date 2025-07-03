@@ -60,6 +60,11 @@ public class AddAddressServlet extends HttpServlet {
 		int newId = ds.doSave(newAddress);
 		if (newId > 0) {
 			ds.doUpdateActive(newId);
+			if ("Billing".equalsIgnoreCase(addressTypeParam)) {
+			    request.getSession().setAttribute("billingSaved", true);
+			} else if ("Shipping".equalsIgnoreCase(addressTypeParam)) {
+			    request.getSession().setAttribute("shippingSaved", true);
+			}
 			response.sendRedirect(request.getContextPath() + "/resources/common/checkout.jsp"); 
 		} else {
 		    response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Errore nel salvataggio dell'indirizzo");

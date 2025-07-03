@@ -1,0 +1,7 @@
+div.error {
+	display: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: #a5243d;
+    margin-bottom: 6px;
+}
