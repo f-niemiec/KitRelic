@@ -69,6 +69,11 @@ public class AddressBean implements Serializable{
 		this.userId = userId;
 	}
 	
+	@Override
+	public String toString() {
+	    return city + ", " + province + ", " + street + ", " + country;
+	}
+	
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private TipoIndirizzo address;

@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("logmail", email);
 			session.setAttribute("logtype", user.getTypeByMail(email));
 			session.setAttribute("logname", user.getNameByMail(email));
+			session.setAttribute("logsurname", user.getSurnameByMail(email));
 			if(user.getTypeByMail(email).equals("Admin")) {
 				response.sendRedirect(request.getContextPath() + "/resources/admin/catalogue.jsp");
 			} else if(fromCart){

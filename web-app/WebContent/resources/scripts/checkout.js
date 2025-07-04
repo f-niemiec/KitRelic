@@ -15,6 +15,7 @@ function validateCheckout(event) {
   const billingSaved = billingInput && billingInput.value === 'true';
   const shippingSaved = shippingInput && shippingInput.value === 'true';
   const usingSame = sameAsBilling && sameAsBilling.checked;
+  const hiddenSame = document.getElementById('hiddenSameAsBilling');
   if (form.action.includes('AddPaymentCardServlet')) {
     if (!billingSaved || (!usingSame && !shippingSaved)) {
       if (errorDiv) errorDiv.style.display = 'block';
@@ -111,17 +112,20 @@ function validateCheckout(event) {
     const err = form.querySelector('#error-cvv');
     if (err) err.style.display = 'none';
   }
+  if (hiddenSame && sameAsBilling) {
+    hiddenSame.value = sameAsBilling.checked ? 'true' : '';
+  }
   if (!valid) event.preventDefault();
   return valid;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const checkbox = document.getElementById('sameAsBilling');
-    const shippingSavedField = document.getElementById('shippingSaved');
-
-    if (checkbox && shippingSavedField) {
-      checkbox.addEventListener('change', () => {
-        shippingSavedField.value = checkbox.checked ? 'true' : 'false';
-      });
-    }
-  });
+  const checkbox = document.getElementById('sameAsBilling');
+  const hiddenSame = document.getElementById('hiddenSameAsBilling');
+  if (checkbox && hiddenSame) {
+    hiddenSame.value = checkbox.checked ? 'true' : '';
+    checkbox.addEventListener('change', () => {
+      hiddenSame.value = checkbox.checked ? 'true' : '';
+    });
+  }
+});

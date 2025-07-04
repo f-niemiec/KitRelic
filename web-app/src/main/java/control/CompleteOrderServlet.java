@@ -20,6 +20,8 @@ import model.OrderBean;
 import model.OrderDS;
 import model.OrderItemBean;
 import model.PaymentCardBean;
+import model.ProductBean;
+import model.ProductDS;
 import model.TipoIndirizzo;
 
 @WebServlet("/CompleteOrderServlet")
@@ -37,7 +39,7 @@ public class CompleteOrderServlet extends HttpServlet {
         AddressBean billing = (AddressBean) session.getAttribute("activeBilling");
         AddressBean shipping = (AddressBean) session.getAttribute("activeShipping");
         String sameAsBilling = request.getParameter("sameAsBilling");
-        if(sameAsBilling != null && billing != null) {
+        if("true".equals(sameAsBilling) && billing != null) {
             shipping = new AddressBean();
             shipping.setUserId(billing.getUserId());
             shipping.setCity(billing.getCity());
@@ -50,13 +52,30 @@ public class CompleteOrderServlet extends HttpServlet {
             int newShippingId = addressDS.doSave(shipping);
             addressDS.doUpdateActive(newShippingId);
             shipping.setId(newShippingId);
+            session.setAttribute("shippingSaved", true);
         }
         if(billing == null || shipping == null) {
             response.sendRedirect(request.getContextPath() + "/resources/common/checkout.jsp");
             return;
         }
+        ProductDS productDS = new ProductDS();
+        boolean available = true;
+        for (CartItemBean item : cart.getCart()) {
+            ProductBean product = productDS.doRetrieveByKey(item.getId());
+            if (product.getQuantity() < item.getQuantity()) {
+                available = false;
+                break;
+            }
+        }
+        if (!available) {
+        	response.sendRedirect(request.getContextPath() + "/resources/error-pages/500.jsp");
+            return;
+        }
         OrderBean ordine = new OrderBean();
         ordine.setUserId(userId);
+        ordine.setUserEmail((String) session.getAttribute("logmail"));
+        ordine.setUserName((String) session.getAttribute("logname"));
+        ordine.setUserSurname((String) session.getAttribute("logsurname"));
         ordine.setCard(card);
         ordine.setBilling(billing);
         ordine.setShipping(shipping);
@@ -73,6 +92,9 @@ public class CompleteOrderServlet extends HttpServlet {
             items.add(orderItem);
         }
         ordine.setItems(items);
+        for (CartItemBean item : cart.getCart()) {
+            productDS.doUpdateQuantity(item.getId(), -item.getQuantity());
+        }
         OrderDS orderDS = new OrderDS();
         int orderId = orderDS.doSave(ordine);
         if(orderId == 0) {
