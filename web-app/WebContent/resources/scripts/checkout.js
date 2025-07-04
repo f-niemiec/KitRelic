@@ -114,3 +114,14 @@ function validateCheckout(event) {
   if (!valid) event.preventDefault();
   return valid;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const checkbox = document.getElementById('sameAsBilling');
+    const shippingSavedField = document.getElementById('shippingSaved');
+
+    if (checkbox && shippingSavedField) {
+      checkbox.addEventListener('change', () => {
+        shippingSavedField.value = checkbox.checked ? 'true' : 'false';
+      });
+    }
+  });

@@ -7,6 +7,8 @@
     color: #1d1718;
     box-sizing: border-box;
     flex-wrap: wrap;
+    flex: 1 1 600px;
+  	flex-direction: column;
 }
 
 .checkout-wrapper {
@@ -19,23 +21,18 @@
   	box-sizing: border-box;
 }
 
-.color-insert {
-  	flex: 1 1 600px;
-  	display: flex;
-  	flex-direction: column;
-  	gap: 30px;
-}
-
-
 .billing-address, .shipping-address, .payment-method {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 7px rgba(0,0,0,0.1);
     padding: 20px 25px;
     margin-bottom: 30px;
-    max-width: 600px;
     width: 100%;
+    max-width: 600px;
+    flex: 1 1 0;
+    min-width: 0;
     position: relative; 
+    box-sizing: border-box;
 }
 
 .billing-title, .shipping-title, .payment-method h3 {
@@ -121,20 +118,12 @@ input[type="submit"]:hover {
     margin-top: 15px;
 }
 
-.payment-method label input[type="checkbox"] {
-    width: auto;
-    margin-right: 8px;
-    vertical-align: middle;
-}
-
-
 .payment-method form {
     position: relative;
-    padding-top: 50px; 
 }
 
-.payment-method form > label:first-of-type {
-    position: absolute;
+.billing-address form > label:last-of-type {
+	margin-top: 10px;
     top: 10px;
     left: 0;
     right: 0;
@@ -153,7 +142,7 @@ input[type="submit"]:hover {
     transition: background-color 0.3s ease;
 }
 
-.payment-method form > label:first-of-type:hover {
+.billing-address form > label:last-of-type:hover {
     background-color: #d4cdc9;
 }
 
@@ -165,40 +154,6 @@ input[type="submit"]:hover {
     margin-bottom: 12px;
 }
 
-.cart-container {
-  display: flex;
-  gap: 30px;
-  padding: 20px;
-  font-family: 'Inter', Arial, sans-serif;
-  background-color: #e7e1df;
-  color: #1d1718;
-  box-sizing: border-box;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-}
-
-.prod-container {
-  flex: 2 1 auto;
-  min-width: 300px;
-  max-width: 65%;
-}
-
-.recap {
-  flex: 1 1 auto;
-  min-width: 250px;
-  max-width: 35%;
-  background-color: #fff;
-  padding: 20px 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 7px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: auto;
-  position: sticky;
-  top: 20px;
-}
-
 .cart-summary {
     background-color: #fff;
     border-radius: 8px;
@@ -206,6 +161,7 @@ input[type="submit"]:hover {
     padding: 20px 25px;
     max-width: 600px;
     width: 100%;
+    min-width: 350px;
     font-family: 'Inter', Arial, sans-serif;
     color: #1d1718;
     margin-top: 18px;
@@ -257,30 +213,43 @@ input[type="submit"]:hover {
     color: #1d1718;
 }
 
-@media (max-width: 740px) {
-  .cart-container {
-    flex-direction: column;
-    gap: 20px;
-    padding: 15px;
-  }
-
-  .prod-container, .recap {
-    width: 100%;
-    max-width: 100%;
-    min-width: unset;
-  }
-}
-
-
-
-@media (max-width: 740px) {
-    .billing-address, .shipping-address, .payment-method {
-        max-width: 100%;
+@media screen and (max-width: 1130px) {
+    .checkout-wrapper {
+        flex-direction: column;
+    }
+    .cart-summary {
+        position: static;
+        margin-right: 0;
+        margin-top: 20px;
+        margin-left: 19px;
+        max-width: 52%;
+        order: -1;
         padding: 15px 20px;
+        margin-bottom: 0;
     }
 }
 
-@media (max-width: 400px) {
+@media screen and (max-width: 740px) {
+    .billing-address, .shipping-address, .payment-method {
+        max-width: 100%;
+        padding: 15px 20px;
+        order: 1;
+    }
+    .cart-summary {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .billing-address input[type="text"], .shipping-address input[type="text"], 
+    .payment-method input[type="text"], .payment-method input[type="password"], 
+    .payment-method input[type="date"] {
+        font-size: 0.95em;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
     input[type="submit"] {
         width: 100%;
         padding: 12px 0;

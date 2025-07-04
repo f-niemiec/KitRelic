@@ -65,6 +65,12 @@
             </tr>
         </tbody>
     </table>
+    <form action="#" method="post">
+    	<label>
+            <input type="checkbox" id="sameAsBilling" name="sameAsBilling" onchange="toggleShippingForm()">
+            Usa lo stesso indirizzo per la spedizione
+        </label><br/>
+    </form>
     <% } else { %>
     <form action="<%=request.getContextPath()%>/AddAddressServlet" method="post" onsubmit="return validateCheckout(event)">
         <input type="hidden" name="addressType" value="Billing">
@@ -82,6 +88,10 @@
         <input type="text" name="country" required>
         <div class="error" id="error-country" style="display: none;">Paese non valido</div>
         <input type="submit" value="Inserisci" />
+        <label>
+            <input type="checkbox" id="sameAsBilling" name="sameAsBilling" onchange="toggleShippingForm()">
+            Usa lo stesso indirizzo per la spedizione
+        </label><br/>
     </form>
     <% } %>
 </div>
@@ -142,10 +152,7 @@
         <input type="hidden" name="userID" value="<%=userId%>">
         <input type="hidden" id="billingSaved" value="<%= billingSaved %>"/>
 		<input type="hidden" id="shippingSaved" value="<%= shippingSaved %>"/>
-        <label>
-            <input type="checkbox" id="sameAsBilling" name="sameAsBilling" onchange="toggleShippingForm()">
-            Usa lo stesso indirizzo per la spedizione
-        </label><br/>
+		<input type="hidden" name="sameAsBilling" id="hiddenSameAsBilling">
         <h3>Inserisci un nuovo metodo di pagamento</h3>
         <label for="cardNumber">Numero di carta:</label>
         <input type="text" id="cardNumber" name="cardNumber" maxlength="16" required>
