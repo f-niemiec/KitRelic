@@ -29,6 +29,7 @@
 	<div class="cart-container">
         <div class="prod-container">
                 <h3 class="section-title">Ordine #<%= order.getId() %></h3>
+                <div class="responsive-wrapper">
                 <table class="cart-table">
                     <thead>
                         <tr>
@@ -46,13 +47,45 @@
                     		<td><%=order.getUserName()%></td>
                         	<td><%=order.getUserSurname()%></td>
                         	<td><%=order.getUserEmail()%></td>
-                        	<td><%=order.getShipping().toString()%>
+                        	<td><%=order.getShipping().toString()%></td>
                         	<td><%=order.getBilling().toString()%></td>
-                        	<td><%=order.getCard().getCardNumber()%></td>
+                        	<td><%="***********" + order.getCard().getCardNumber()
+                        		.substring(order.getCard().getCardNumber().length() - 4) %>
+							</td>
                         	<td><%=String.format("%.2f", order.getTotal())%>€</td>
                      	<tr>
                    	</tbody>
                	</table>
+               	</div>
+               	<div class="prod-container">
+                <h3 class="section-title">Articoli</h3>
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Taglia</th>
+                            <th>Quantità</th>
+                            <th>Costo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<% 
+                    		
+                    		Iterator it = order.getItems().iterator(); 
+                    	   	while(it.hasNext() ){
+                    	   	OrderItemBean item = (OrderItemBean) it.next();
+                    	   	String price = String.format("%.2f", item.getProductPrice());
+                    	%>
+                    	<tr>
+                    		<td><%=item.getProductName()%></td>
+                        	<td><%=item.getProductSize()%></td>
+                        	<td><%=item.getQuantity()%></td>
+                        	<td><%= item.getQuantity() + " * " + price + "€" %></td>
+                     	<tr>
+                     	<% } %>
+                   	</tbody>
+               	</table>
+        </div>
         </div>
     </div>
     <%@ include file="footer.jsp"%>

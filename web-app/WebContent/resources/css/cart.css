@@ -207,8 +207,30 @@ h3.section-title {
 .checkout input.invio:hover {
     background-color: #3a3132;
 }
+@media screen and (max-width: 825px) {
+  .responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 
-@media (max-width: 740px) {
+  .responsive-wrapper .cart-table {
+    min-width: 700px; 
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: max-content;
+  }
+
+  .responsive-wrapper .cart-table th, .responsive-wrapper .cart-table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+ 
+}
+
+@media screen and (max-width: 740px) {
   .cart-container {
     flex-direction: column;
     gap: 20px;
@@ -267,4 +289,3 @@ h3.section-title {
     font-size: 1.2em;
   }
 }
-

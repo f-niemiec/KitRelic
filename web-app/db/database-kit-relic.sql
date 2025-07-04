@@ -83,6 +83,16 @@ VALUES (
     '2004-03-23'
 );
 
+INSERT INTO Utenti (Password, Email, Nome, Cognome, Tipo, DataNascita)
+VALUES (
+    'ba97ee796625c49f9b08e42a4a760f648dd5b85ca551450afeefde4986985284cb61383093ebd1549a23d49c649f6ebe66be313402af70dcd44940e06bc093a5',
+    'francesconiemiec22@gmail.com',
+    'Franek',
+    'Tedesco',
+    'Utente',
+    '2004-03-23'
+);
+
 INSERT INTO Prodotti (Nome, Prezzo, Quantita, Tipo, Taglia, Tendenza, Nuovo, Descrizione) VALUES
 -- Maglie da calcio
 ('Maglia Napoli Home 2022 EA7', 79.00, 15, 'Maglia da calcio', 'M', TRUE, TRUE, 'Maglia ufficiale SSC Napoli 2022 con sponsor EA7'),
