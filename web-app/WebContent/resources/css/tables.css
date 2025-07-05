@@ -129,6 +129,50 @@ td:nth-child(11) a {
     text-decoration: underline;
     font-size: 14px;
   }
+  
+.order-container {
+  	display: flex;
+  	flex-direction: column;
+  	gap: 48px;
+  	margin-bottom: 40px;
+}
+
+.filter-form {
+  	width: 60%;
+  	max-width: 400px;
+  	margin: 0 auto 40px auto;
+  	background-color: #e7e1df;
+  	padding: 20px;
+  	border-radius: 8px;
+  	box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  	color: #1d1718;
+  	text-align: left;
+}
+
+.filter-form fieldset {
+  	border: none;
+  	padding: 0;
+  	margin: 0;
+}
+
+.filter-form legend {
+  	font-size: 18px;
+  	font-weight: bold;
+  	margin-bottom: 16px;
+  	color: #1d1718;
+}
+
+.form-group {
+  	margin-bottom: 12px;
+  	display: flex;
+  	flex-direction: column;
+}
+
+.form-group label {
+  	margin-bottom: 4px;
+  	font-size: 14px;
+}
+
 
 @media screen and (max-width: 920px) {
   table {

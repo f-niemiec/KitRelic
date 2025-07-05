@@ -13,4 +13,5 @@ public interface OrderDAO {
 	Collection<OrderBean> doRetrieveByUserID(int userId);
 	Collection<OrderBean> doRetrieveAll(String order);
 	Collection<OrderBean> doRetrieveByDate(LocalDate from, LocalDate to);
+	Collection<OrderBean> doRetrieveByDateAndUser(LocalDate from, LocalDate to, int userId);
 }

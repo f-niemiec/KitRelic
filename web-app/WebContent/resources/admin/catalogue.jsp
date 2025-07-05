@@ -37,7 +37,7 @@
 			<button onclick="window.location.href='${pageContext.request.contextPath}/resources/admin/productUpload.jsp'">Inserisci prodotto</button>
 		</div>
 		<div class="order">
-			<button onclick="window.location.href='//'">Visualizza ordini utente</button>
+			<button onclick="window.location.href='${pageContext.request.contextPath}/resources/admin/completed-orders.jsp'">Visualizza ordini utente</button>
 		</div>
 	</div>
 	<%
