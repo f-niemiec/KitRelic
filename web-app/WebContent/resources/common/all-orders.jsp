@@ -1,36 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, model.OrderBean" %>
-<%  
-    String email = (String) request.getSession().getAttribute("logmail");
+    pageEncoding="UTF-8" import="java.util.*, model.*"%>
+<%
+	String email = (String) request.getSession().getAttribute("logmail");
 	String username = (String) request.getSession().getAttribute("username");
-    boolean isLogged = false;
-    OrderBean order = (OrderBean) request.getSession().getAttribute("confirmedOrder");
-    if(email != null && !email.isEmpty()){
-        isLogged = true;
-    } else {
-        response.sendRedirect(request.getContextPath() + "/resources/common/Login.jsp");
-        return;
-    }
-    if(order == null){
-    	response.sendRedirect(request.getContextPath() + "/resources/errors/403.jsp");
-        return;
-    }
-%>    
+	boolean isLogged = false;
+	if(email != null && !email.isEmpty()){
+    	isLogged = true;
+	} else {
+    	response.sendRedirect(request.getContextPath() + "/resources/common/Login.jsp");
+    	return;
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Il tuo ordine</title>
+	<title>Ordini</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/cart.css">
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+	<%@ include file="header.jsp" %>
+	<%	OrderDS ds = new OrderDS();
+		Collection<OrderBean> orders = ds.doRetrieveByUserID(UserDS.getIDByMail(email));
+		Iterator<?> list = orders.iterator();
+		if(list.hasNext()){
+			while(list.hasNext()){
+				OrderBean order = (OrderBean) list.next();
+	%>
 	<div class="cart-container">
         <div class="prod-container">
-                <h3 class="section-title">Ordine #<%= order.getId() %>, 
-               	<%= order.getDate() %>
-                </h3>
+                <h3 class="section-title">Ordine #<%= order.getId() %></h3>
                 <div class="responsive-wrapper">
                 <table class="cart-table">
                     <thead>
@@ -89,6 +89,9 @@
         </div>
         </div>
     </div>
-    <%@ include file="footer.jsp"%>
+	<% }} else { %>
+                <div class="empty-cart">Non sono presenti prodotti.</div>
+    <% } %>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>

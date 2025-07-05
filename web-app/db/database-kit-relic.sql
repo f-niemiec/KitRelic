@@ -69,8 +69,10 @@ CREATE TABLE OggettoOrdine (
     OrdineID INT,
     ProdottoID INT,
     Quantita INT,
-    FOREIGN KEY (OrdineID) REFERENCES Ordini(ID),
-    FOREIGN KEY (ProdottoID) REFERENCES Prodotti(ID)
+    NomeProdotto VARCHAR(80),
+	PrezzoAcquisto DECIMAL(10,2),
+	Taglia VARCHAR(10),
+    FOREIGN KEY (OrdineID) REFERENCES Ordini(ID)
 );
 
 INSERT INTO Utenti (Password, Email, Nome, Cognome, Tipo, DataNascita)

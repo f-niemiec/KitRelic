@@ -55,30 +55,41 @@ public class OrderDS implements OrderDAO {
         String queryOrdine = "SELECT * FROM " + TABLE_NAME + " WHERE ID = ?";
         String queryItems = "SELECT o.Quantita, p.* FROM OggettoOrdine o JOIN Prodotti p ON o.ProdottoID = p.ID WHERE o.OrdineID = ?";
         OrderBean ordine = null;
-        try (Connection connection = ds.getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement(queryOrdine);
-            preparedStatement.setInt(1, id);
-            ResultSet rsOrdine = preparedStatement.executeQuery();
-            if (rsOrdine.next()) {
+        UserDS userDS = new UserDS();
+        PaymentCardDS paymentCardDS = new PaymentCardDS();
+        AddressDS addressDS = new AddressDS();
+
+        try(Connection connection = ds.getConnection()) {
+            PreparedStatement psOrdine = connection.prepareStatement(queryOrdine);
+            psOrdine.setInt(1, id);
+            ResultSet rsOrdine = psOrdine.executeQuery();
+            if(rsOrdine.next()) {
                 ordine = new OrderBean();
                 ordine.setId(rsOrdine.getInt("ID"));
                 ordine.setDate(rsOrdine.getDate("Data").toLocalDate());
                 ordine.setTotal(rsOrdine.getDouble("Costo"));
-                ordine.setUserId(rsOrdine.getInt("IdUtente"));
-                PaymentCardBean card = new PaymentCardBean();
-                card.setId(rsOrdine.getInt("IDCarta"));
-                ordine.setCard(card);
-                AddressBean shipping = new AddressBean();
-                shipping.setId(rsOrdine.getInt("IDIndirizzo"));
-                ordine.setShipping(shipping);
-                AddressBean billing = new AddressBean();
-                billing.setId(rsOrdine.getInt("IDFatturazione"));
-                ordine.setBilling(billing);
-                Collection<OrderItemBean> items = new LinkedList<>();
+                int userId = rsOrdine.getInt("IdUtente");
+                String email = "";
+                String queryEmail = "SELECT Email FROM " + "Utenti" + " WHERE ID = ?";
+                try(PreparedStatement psEmail = connection.prepareStatement(queryEmail)) {
+                    psEmail.setInt(1, userId);
+                    ResultSet rsEmail = psEmail.executeQuery();
+                    if(rsEmail.next()) {
+                        email = rsEmail.getString("Email");
+                    }
+                }
+                ordine.setUserId(userId);
+                ordine.setUserEmail(email);
+                ordine.setUserName(userDS.getNameByMail(email));
+                ordine.setUserSurname(userDS.getSurnameByMail(email));
+                ordine.setCard(paymentCardDS.doRetrieveByKey(rsOrdine.getInt("IdCarta")));
+                ordine.setShipping(addressDS.doRetrieveByKey(rsOrdine.getInt("IDIndirizzo")));
+                ordine.setBilling(addressDS.doRetrieveByKey(rsOrdine.getInt("IDFatturazione")));
                 PreparedStatement psItems = connection.prepareStatement(queryItems);
                 psItems.setInt(1, id);
                 ResultSet rsItems = psItems.executeQuery();
-                while (rsItems.next()) {
+                Collection<OrderItemBean> items = new LinkedList<>();
+                while(rsItems.next()) {
                     OrderItemBean item = new OrderItemBean();
                     item.setProductId(rsItems.getInt("ID"));
                     item.setProductName(rsItems.getString("Nome"));
@@ -89,11 +100,13 @@ public class OrderDS implements OrderDAO {
                 }
                 ordine.setItems(items);
             }
-        } catch (SQLException e) {
-            System.out.println("Errore durante il recupero dell'ordine: " + e.getMessage());
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
         }
         return ordine;
     }
+
+
 
     public Collection<OrderBean> doRetrieveByUserID(int userId) {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE IDUtente = ?";

@@ -57,7 +57,7 @@
 						<a href="#">Storico ordini</a>	
 						<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>	
 						<% } else if(mail!=null){ %>
-						<a href="#">Storico ordini</a>
+						<a href="${pageContext.request.contextPath}/resources/common/all-orders.jsp">Storico ordini</a>
 						<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>
 						<% } else { %>
 						<a href="${pageContext.request.contextPath}/resources/common/Login.jsp">Login</a>
