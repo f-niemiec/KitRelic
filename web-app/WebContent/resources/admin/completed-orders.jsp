@@ -16,6 +16,19 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/tables.css">
 </head>
 <body>
+	<h2>Bentornato, ${sessionScope.logname}! </h2>
+	<p>Seleziona l'azione che desideri compiere.</p>
+	<div class="container">
+		<div class="order">
+			<button onclick="window.location.href='${pageContext.request.contextPath}/resources/common/index.jsp'">Home</button>
+		</div>
+		<div class="insert">
+			<button onclick="window.location.href='${pageContext.request.contextPath}/resources/admin/productUpload.jsp'">Inserisci prodotto</button>
+		</div>
+		<div class="order">
+			<button onclick="window.location.href='${pageContext.request.contextPath}/resources/admin/catalogue.jsp'">Catalogo</button>
+		</div>
+	</div>
     <h2>Ordini Utente</h2>
     <form action="FilterOrdersServlet" method="post" class="filter-form">
     <fieldset>

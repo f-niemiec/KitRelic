@@ -131,3 +131,68 @@ INSERT INTO Prodotti (Nome, Prezzo, Quantita, Tipo, Taglia, Tendenza, Nuovo, Des
 ('Giacca PSG Jordan Windbreaker', 92.00, 8, 'Giacche sportive', 'L', TRUE, TRUE, 'Giacca tecnica antivento nero/rosa PSG x Jordan'),
 ('Giacca Napoli 1987 Kappa Rétro', 99.00, 6, 'Giacche sportive', 'XL', TRUE, FALSE, 'Giaccone vintage con logo Mars anni ’80');
 
+-- Utenti
+INSERT INTO Utenti (Password, Email, Nome, Cognome, Tipo, DataNascita) VALUES
+('hash1', 'alice@example.com', 'Alice', 'Rossi', 'Utente', '1995-01-01'),
+('hash2', 'bob@example.com', 'Bob', 'Verdi', 'Utente', '1992-02-02'),
+('hash3', 'carla@example.com', 'Carla', 'Bianchi', 'Utente', '1989-03-03'),
+('hash4', 'daniel@example.com', 'Daniel', 'Neri', 'Utente', '1997-04-04'),
+('hash5', 'elena@example.com', 'Elena', 'Marrone', 'Utente', '1990-05-05'),
+('hash6', 'fabio@example.com', 'Fabio', 'Blu', 'Utente', '1993-06-06');
+
+-- Indirizzi (Shipping + Billing per ciascun utente)
+INSERT INTO Indirizzi (Tipo, Attivo, Citta, Via, Provincia, Paese, CodUtente) VALUES
+('Shipping', TRUE, 'Roma', 'Via Appia 10', 'RM', 'Italia', 3),
+('Billing', TRUE, 'Roma', 'Via Appia 11', 'RM', 'Italia', 3),
+('Shipping', TRUE, 'Milano', 'Via Dante 20', 'MI', 'Italia', 4),
+('Billing', TRUE, 'Milano', 'Via Dante 21', 'MI', 'Italia', 4),
+('Shipping', TRUE, 'Bologna', 'Via Marconi 30', 'BO', 'Italia', 5),
+('Billing', TRUE, 'Bologna', 'Via Marconi 31', 'BO', 'Italia', 5),
+('Shipping', TRUE, 'Firenze', 'Via Leopardi 40', 'FI', 'Italia', 6),
+('Billing', TRUE, 'Firenze', 'Via Leopardi 41', 'FI', 'Italia', 6),
+('Shipping', TRUE, 'Torino', 'Via Po 50', 'TO', 'Italia', 7),
+('Billing', TRUE, 'Torino', 'Via Po 51', 'TO', 'Italia', 7),
+('Shipping', TRUE, 'Genova', 'Via Garibaldi 60', 'GE', 'Italia', 8),
+('Billing', TRUE, 'Genova', 'Via Garibaldi 61', 'GE', 'Italia', 8);
+
+-- Carte
+INSERT INTO MetodoDiPagamento (Scadenza, NumeroCarta, CVV, Proprietario, IDUtente) VALUES
+('2026-10-01', '4111111111110001', '111', 'Alice Rossi', 3),
+('2026-10-01', '4111111111110002', '222', 'Bob Verdi', 4),
+('2026-10-01', '4111111111110003', '333', 'Carla Bianchi', 5),
+('2026-10-01', '4111111111110004', '444', 'Daniel Neri', 6),
+('2026-10-01', '4111111111110005', '555', 'Elena Marrone', 7),
+('2026-10-01', '4111111111110006', '666', 'Fabio Blu', 8);
+
+-- Ordini (randomizzati con utenti da ID 3 a 8)
+INSERT INTO Ordini (IdUtente, Costo, Data, IdCarta, IDFatturazione, IDIndirizzo) VALUES
+(3, 121.00, '2025-01-15', 1, 2, 1),
+(4, 79.00,  '2025-01-16', 2, 4, 3),
+(5, 85.00,  '2025-02-05', 3, 6, 5),
+(6, 160.00, '2024-02-10', 4, 8, 7),
+(7, 128.50, '2024-03-01', 5, 10, 9),
+(8, 92.99,  '2024-03-10', 6, 12, 11),
+(3, 55.00,  '2023-04-01', 1, 2, 1),
+(4, 99.00,  '2023-04-08', 2, 4, 3),
+(5, 144.00, '2023-04-15', 3, 6, 5),
+(6, 110.50, '2022-04-20', 4, 8, 7);
+
+-- Oggetti ordine 
+INSERT INTO OggettoOrdine (OrdineID, ProdottoID, Quantita, NomeProdotto, PrezzoAcquisto, Taglia) VALUES
+(1, 1, 1, 'Maglia Napoli Home 2022 EA7', 79.00, 'M'),
+(1, 2, 2, 'Maglia Udinese 2021 Away Macron', 21.00, 'L'),
+(2, 3, 1, 'Maglia Real Madrid 2019', 85.00, 'M'),
+(3, 4, 1, 'Maglia Manchester United 2020', 82.90, 'L'),
+(3, 5, 1, 'Maglia Ajax 1995 Retro', 89.00, 'XL'),
+(4, 2, 2, 'Maglia Udinese 2021 Away Macron', 21.00, 'L'),
+(4, 6, 1, 'Canotta OKC Thunder Home Gilgeous-Alexander', 84.99, 'L'),
+(5, 3, 1, 'Maglia Real Madrid 2019', 85.50, 'M'),
+(5, 1, 1, 'Maglia Napoli Home 2022 EA7', 79.00, 'M'),
+(6, 5, 1, 'Maglia Ajax 1995 Retro', 89.00, 'XL'),
+(6, 6, 1, 'Canotta OKC Thunder Home Gilgeous-Alexander', 84.99, 'L'),
+(7, 2, 1, 'Maglia Udinese 2021 Away Macron', 21.00, 'L'),
+(8, 4, 1, 'Maglia Manchester United 2020', 82.90, 'L'),
+(8, 5, 1, 'Maglia Ajax 1995 Retro', 89.00, 'XL'),
+(9, 6, 2, 'Canotta OKC Thunder Home Gilgeous-Alexander', 84.99, 'L'),
+(10, 1, 1, 'Maglia Napoli Home 2022 EA7', 79.00, 'M'),
+(10, 3, 1, 'Maglia Real Madrid 2019', 85.50, 'M');

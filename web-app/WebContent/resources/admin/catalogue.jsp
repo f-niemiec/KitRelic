@@ -33,6 +33,9 @@
 	<h2>Bentornato, ${sessionScope.logname}! </h2>
 	<p>Seleziona l'azione che desideri compiere.</p>
 	<div class="container">
+		<div class="order">
+			<button onclick="window.location.href='${pageContext.request.contextPath}/resources/common/index.jsp'">Home</button>
+		</div>
 		<div class="insert">
 			<button onclick="window.location.href='${pageContext.request.contextPath}/resources/admin/productUpload.jsp'">Inserisci prodotto</button>
 		</div>
