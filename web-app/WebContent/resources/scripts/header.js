@@ -1,19 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
   const dropdown = document.querySelector(".dropdown");
+  const dropdownButton = document.querySelector(".dropdown-menu");
   const dropdownContent = document.querySelector(".dropdown-content");
-
-  if (dropdown && dropdownContent) {
-    dropdown.addEventListener("click", (e) => {
-      e.stopPropagation();
-      dropdownContent.style.display =
-        dropdownContent.style.display === "block" ? "none" : "block";
+  let hoverTimeout;
+  if (dropdown && dropdownButton && dropdownContent) {
+    dropdown.addEventListener("mouseenter", () => {
+      clearTimeout(hoverTimeout);
+      dropdown.classList.add("open");
+    });
+    dropdown.addEventListener("mouseleave", () => {
+      hoverTimeout = setTimeout(() => {
+        dropdown.classList.remove("open");
+      }, 150);
     });
 
-    document.addEventListener("click", () => {
-      dropdownContent.style.display = "none";
+    dropdownButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle("open");
+      clearTimeout(hoverTimeout);
+    });
+    document.addEventListener("click", (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("open");
+      }
     });
   }
-
   const searchInput = document.querySelector('input[name="search"]');
   const resultsContainer = document.getElementById('search-results');
   const appRoot = document.getElementById('app-root');
@@ -90,5 +101,3 @@ document.addEventListener("DOMContentLoaded", () => {
     badge.style.display = "none";
   }
 });
-
-

@@ -133,12 +133,12 @@ INSERT INTO Prodotti (Nome, Prezzo, Quantita, Tipo, Taglia, Tendenza, Nuovo, Des
 
 -- Utenti
 INSERT INTO Utenti (Password, Email, Nome, Cognome, Tipo, DataNascita) VALUES
-('hash1', 'alice@example.com', 'Alice', 'Rossi', 'Utente', '1995-01-01'),
-('hash2', 'bob@example.com', 'Bob', 'Verdi', 'Utente', '1992-02-02'),
-('hash3', 'carla@example.com', 'Carla', 'Bianchi', 'Utente', '1989-03-03'),
-('hash4', 'daniel@example.com', 'Daniel', 'Neri', 'Utente', '1997-04-04'),
-('hash5', 'elena@example.com', 'Elena', 'Marrone', 'Utente', '1990-05-05'),
-('hash6', 'fabio@example.com', 'Fabio', 'Blu', 'Utente', '1993-06-06');
+('ba97ee796625c49f9b08e42a4a760f648dd5b85ca551450afeefde4986985284cb61383093ebd1549a23d49c649f6ebe66be313402af70dcd44940e06bc093a5', 'alice@example.com', 'Alice', 'Rossi', 'Utente', '1995-01-01'),
+('ba97ee796625c49f9b08e42a4a760f648dd5b85ca551450afeefde4986985284cb61383093ebd1549a23d49c649f6ebe66be313402af70dcd44940e06bc093a5', 'bob@example.com', 'Bob', 'Verdi', 'Utente', '1992-02-02'),
+('ba97ee796625c49f9b08e42a4a760f648dd5b85ca551450afeefde4986985284cb61383093ebd1549a23d49c649f6ebe66be313402af70dcd44940e06bc093a5', 'carla@example.com', 'Carla', 'Bianchi', 'Utente', '1989-03-03'),
+('ba97ee796625c49f9b08e42a4a760f648dd5b85ca551450afeefde4986985284cb61383093ebd1549a23d49c649f6ebe66be313402af70dcd44940e06bc093a5', 'daniel@example.com', 'Daniel', 'Neri', 'Utente', '1997-04-04'),
+('ba97ee796625c49f9b08e42a4a760f648dd5b85ca551450afeefde4986985284cb61383093ebd1549a23d49c649f6ebe66be313402af70dcd44940e06bc093a5', 'elena@example.com', 'Elena', 'Marrone', 'Utente', '1990-05-05'),
+('ba97ee796625c49f9b08e42a4a760f648dd5b85ca551450afeefde4986985284cb61383093ebd1549a23d49c649f6ebe66be313402af70dcd44940e06bc093a5', 'fabio@example.com', 'Fabio', 'Blu', 'Utente', '1993-06-06');
 
 -- Indirizzi (Shipping + Billing per ciascun utente)
 INSERT INTO Indirizzi (Tipo, Attivo, Citta, Via, Provincia, Paese, CodUtente) VALUES
@@ -164,18 +164,18 @@ INSERT INTO MetodoDiPagamento (Scadenza, NumeroCarta, CVV, Proprietario, IDUtent
 ('2026-10-01', '4111111111110005', '555', 'Elena Marrone', 7),
 ('2026-10-01', '4111111111110006', '666', 'Fabio Blu', 8);
 
--- Ordini (randomizzati con utenti da ID 3 a 8)
+-- Ordini
 INSERT INTO Ordini (IdUtente, Costo, Data, IdCarta, IDFatturazione, IDIndirizzo) VALUES
 (3, 121.00, '2025-01-15', 1, 2, 1),
-(4, 79.00,  '2025-01-16', 2, 4, 3),
-(5, 85.00,  '2025-02-05', 3, 6, 5),
-(6, 160.00, '2024-02-10', 4, 8, 7),
-(7, 128.50, '2024-03-01', 5, 10, 9),
-(8, 92.99,  '2024-03-10', 6, 12, 11),
-(3, 55.00,  '2023-04-01', 1, 2, 1),
-(4, 99.00,  '2023-04-08', 2, 4, 3),
-(5, 144.00, '2023-04-15', 3, 6, 5),
-(6, 110.50, '2022-04-20', 4, 8, 7);
+(4, 85.00,  '2025-01-16', 2, 4, 3),
+(5, 171.90, '2025-02-05', 3, 6, 5),
+(6, 126.99, '2024-02-10', 4, 8, 7),
+(7, 164.50, '2024-03-01', 5, 10, 9),
+(8, 173.99, '2024-03-10', 6, 12, 11),
+(3, 21.00,  '2023-04-01', 1, 2, 1),
+(4, 171.90, '2023-04-08', 2, 4, 3),
+(5, 169.98, '2023-04-15', 3, 6, 5),
+(6, 164.50, '2022-04-20', 4, 8, 7);
 
 -- Oggetti ordine 
 INSERT INTO OggettoOrdine (OrdineID, ProdottoID, Quantita, NomeProdotto, PrezzoAcquisto, Taglia) VALUES

@@ -1,5 +1,0 @@
-1) Aggiungi i collegamenti per i bottoni nelle pagine di errore
-2) Collega l'accedi di registration ed anche il submit
-3) Risolvi problema responsive a tabella sotto i 725
-4) Aggiungi delay sul bottone dell'account
-5) Fix responsive tabelle ordini
