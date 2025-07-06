@@ -65,7 +65,11 @@ public class AddAddressServlet extends HttpServlet {
 			} else if ("Shipping".equalsIgnoreCase(addressTypeParam)) {
 			    request.getSession().setAttribute("shippingSaved", true);
 			}
-			response.sendRedirect(request.getContextPath() + "/resources/common/checkout.jsp"); 
+			String info = request.getParameter("fromInfo");
+			if(info!= null && info.equalsIgnoreCase("true")) {
+				response.sendRedirect(request.getContextPath() + "/resources/common/info.jsp");
+			} else
+				response.sendRedirect(request.getContextPath() + "/resources/common/checkout.jsp"); 
 		} else {
 		    response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Errore nel salvataggio dell'indirizzo");
 		}

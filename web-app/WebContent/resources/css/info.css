@@ -1,0 +1,143 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #e7e1df;
+    color: #1d1718;
+    box-sizing: border-box;
+}
+
+.section-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.section-box {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.08);
+    flex: 1;
+    min-width: 300px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.narrow-box {
+    max-width: 500px;
+    width: 100%;
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.section-title {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    border-left: 4px solid #cfc4c0;
+    padding-left: 10px;
+}
+
+.address-form, .card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 0;
+}
+
+.address-form input, .card-form input, .address-form select {
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.address-form input[type="submit"], .card-form input[type="submit"] {
+    background-color: #1d1718;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.address-form input[type="submit"]:hover, .card-form input[type="submit"]:hover {
+    background-color: #3a3132;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.95em;
+}
+
+.data-table th, .data-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+.data-table th {
+    font-weight: 700;
+    background-color: #f5f5f5;
+}
+
+.data-table td .delete-button {
+    background-color: #1d1718;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-table td .delete-button:hover {
+    background-color: #3a3132;
+}
+
+.data-table td .delete-button i {
+    pointer-events: none;
+}
+
+.data-table td[colspan] {
+    text-align: center;
+    color: #555;
+    font-style: italic;
+}
+
+div.error {
+	display: none;
+    font-size: 12px;
+    font-weight: bold;
+    color: #a5243d;
+    margin-bottom: 6px;
+}
+
+@media screen and (max-width: 840px) {
+    .section-row {
+        flex-direction: column;
+    }
+
+    .address-form, .card-form {
+        width: 100%;
+    }
+
+    .data-table th, .data-table td {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+    }
+}

@@ -54,7 +54,7 @@
 						<% if(!user) { %>
 						<a href="${pageContext.request.contextPath}/resources/admin/catalogue.jsp">Catalogo</a>
 						<a href="${pageContext.request.contextPath}/resources/admin/productUpload.jsp">Aggiunta prodotti</a>
-						<a href="#">Storico ordini</a>	
+						<a href="${pageContext.request.contextPath}/resources/admin/completed-orders.jsp">Storico ordini</a>	
 						<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>	
 						<% } else if(mail!=null){ %>
 						<a href="${pageContext.request.contextPath}/resources/common/all-orders.jsp">Storico ordini</a>
@@ -68,10 +68,10 @@
 			</div>
 		
 			
-			<% if(!user ) { %>
+			<% if(!user) { %>
 			<span class="private-area"><a href="${pageContext.request.contextPath}/resources/admin/catalogue.jsp">Area admin</a></span>
 			<% } else if(mail!=null) { %>
-			<span class="private-area">Area personale</span>
+			<span class="private-area"><a href="${pageContext.request.contextPath}/resources/common/info.jsp">Area personale</a></span>
 			<% } %>
 		</div>
 	</div>
