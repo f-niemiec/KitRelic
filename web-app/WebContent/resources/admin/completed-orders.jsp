@@ -56,11 +56,9 @@
             while(list.hasNext()){
                 OrderBean order = (OrderBean) list.next();
     %>
+    <p class="order-number">Ordine #<%=order.getId()%>, Data: <%=order.getDate()%></p>
     <table class="catalogo">
         <thead>
-            <tr>
-                <th colspan="7">Ordine #<%=order.getId()%>, Data: <%=order.getDate()%> </th>
-            </tr>
             <tr>
                 <th>ID Utente</th>
                 <th>Email</th>
@@ -73,15 +71,15 @@
         </thead>
         <tbody>
             <tr>
-                <td><%=order.getUserId()%></td>
-                <td><%=order.getUserEmail()%></td>
-                <td><%=order.getShipping().toString()%></td>
-                <td><%=order.getBilling().toString()%></td>
-                <td><%="***********" + order.getCard().getCardNumber().substring(order.getCard().getCardNumber().length() - 4)%></td>
-                <td><%=String.format("%.2f", order.getTotal())%>€</td>
+                <td data-label="ID Utente"><%=order.getUserId()%></td>
+                <td data-label="Email"><%=order.getUserEmail()%></td>
+                <td data-label="Indirizzo di spedizione"><%=order.getShipping().toString()%></td>
+                <td data-label="Indirizzo di fatturazione"><%=order.getBilling().toString()%></td>
+                <td data-label="Numero di carta"><%="***********" + order.getCard().getCardNumber().substring(order.getCard().getCardNumber().length() - 4)%></td>
+                <td data-label="Totale"><%=String.format("%.2f", order.getTotal())%>€</td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="colonne">
                 <th>Nome Prodotto</th>
                 <th>Taglia</th>
                 <th>Quantità</th>
@@ -97,11 +95,11 @@
                     String total = String.format("%.2f", item.getProductPrice() * item.getQuantity());
             %>
             <tr>
-                <td><%=item.getProductName()%></td>
-                <td><%=item.getProductSize()%></td>
-                <td><%=item.getQuantity()%></td>
-                <td><%=price%>€</td>
-                <td><%=total%>€</td>
+                <td data-label="Nome Prodotto"><%=item.getProductName()%></td>
+                <td data-label="Taglia"><%=item.getProductSize()%></td>
+                <td data-label="Quantità"><%=item.getQuantity()%></td>
+                <td data-label="Prezzo unitario"><%=price%>€</td>
+                <td data-label="Prezzo totale"><%=total%>€</td>
                 <td colspan="2"></td>
             </tr>
             <%

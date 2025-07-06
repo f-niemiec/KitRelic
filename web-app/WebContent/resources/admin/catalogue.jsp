@@ -52,8 +52,9 @@
 		}
 	%>
 	<h2>Prodotti</h2>
+	<div class ="catalogo-wrapper">
 	<table class="catalogo">
-		<tr>
+		<tr class="colonne">
 			<th>Foto</th>
 			<th>ID</th>
 			<th>Nome</th>
@@ -73,17 +74,17 @@
 					ProductBean bean = (ProductBean) it.next();
 		%>
 		<tr>
-			<td><img src="ViewPhotoServlet?id=<%=bean.getId()%>" onerror="this.src='./images/logo.png'"></td>
-			<td><%=bean.getId()%></td>
-			<td><%=bean.getName()%></td>
-			<td><%=bean.getDescription()%></td>
-			<td><%=bean.getType()%></td>
-			<td><%=bean.getSize()%></td>
-			<td><%=bean.getPrice()%></td>
-			<td><%=bean.getQuantity()%></td>
-			<td><%=bean.isTrend()%></td>
-			<td><%=bean.isRecent()%></td>
-			<td>
+			<td data-label="Foto"><img src="ViewPhotoServlet?id=<%=bean.getId()%>" onerror="this.src='./images/logo.png'"></td>
+			<td data-label="ID"><%=bean.getId()%></td>
+			<td data-label="Nome"><%=bean.getName()%></td>
+			<td data-label="Descrizione"><%=bean.getDescription()%></td>
+			<td data-label="Tipo"><%=bean.getType()%></td>
+			<td data-label="Taglia"><%=bean.getSize()%></td>
+			<td data-label="Prezzo"><%=bean.getPrice()%></td>
+			<td data-label="Quantità"><%=bean.getQuantity()%></td>
+			<td data-label="Di tendenza"><%=bean.isTrend()%></td>
+			<td data-label="Nuovo"><%=bean.isRecent()%></td>
+			<td data-label="Azioni">
 				<a href="${pageContext.request.contextPath}/resources/admin/productModify.jsp?action=modify&id=<%=bean.getId()%>">Modifica</a><br>
 				<a href="${pageContext.request.contextPath}/ModifyProductServlet?action=delete&id=<%=bean.getId()%>">Elimina</a><br>
 			</td>
@@ -99,5 +100,6 @@
 			}
 		%>
 	</table>
+	</div>
 </body>
 </html>
