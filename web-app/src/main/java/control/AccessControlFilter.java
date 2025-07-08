@@ -34,7 +34,7 @@ public class AccessControlFilter extends HttpFilter implements Filter {
             return;
         }
         if (type == null || !type.equalsIgnoreCase("admin")) {
-        	httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/403.jsp");
+        	httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/resources/error-pages/403.jsp");
             return;
         }
         chain.doFilter(request, response);

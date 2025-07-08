@@ -49,7 +49,7 @@ public class RegistrationServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			response.sendRedirect(request.getContextPath() + "/resources/common/Login.jsp");
 		} else {
-			response.sendRedirect("404.jsp");
+			response.sendRedirect(request.getContextPath() + "/resources/error-pages/500.jsp");
 		}
 		
 		

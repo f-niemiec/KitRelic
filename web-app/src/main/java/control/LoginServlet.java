@@ -23,8 +23,6 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String fromCartString = request.getParameter("fromCart");
-		boolean fromCart = "true".equalsIgnoreCase(fromCartString);
 		LoginBean bean = new LoginBean();
 		bean.setEmail(email);
 		bean.setPassword(password);
@@ -40,8 +38,6 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("logsurname", user.getSurnameByMail(email));
 			if(user.getTypeByMail(email).equals("Admin")) {
 				response.sendRedirect(request.getContextPath() + "/resources/admin/catalogue.jsp");
-			} else if(fromCart){
-				response.sendRedirect(request.getContextPath() + "/resources/common/checkout.jsp");
 			} else
 				response.sendRedirect(request.getContextPath() + "/resources/common/index.jsp");
 		}
